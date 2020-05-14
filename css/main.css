@@ -1,0 +1,493 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.see-my-work {
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.see-my-work:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.9);
+          box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.9);
+}
+
+#container #presentation {
+  height: 100vh;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#fff));
+  background-image: linear-gradient(to top, #fff 0%, #fff 100%);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 80%;
+      grid-template-columns: 10% 80%;
+  grid-gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+}
+
+#container #presentation #social {
+  height: 100%;
+}
+
+#container #presentation #social ul {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  list-style: none;
+}
+
+#container #presentation #social ul li {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  margin: auto;
+  border: 2px solid black;
+  padding: 1em;
+  width: 85%;
+  text-align: center;
+  border-radius: 4px;
+}
+
+#container #presentation #social ul li:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 2px 2px 0.5px rgba(255, 255, 255, 0.9);
+          box-shadow: 2px 2px 0.5px rgba(255, 255, 255, 0.9);
+}
+
+#container #presentation #social ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+#container #presentation #me {
+  width: 100%;
+}
+
+#container #presentation #me #about_informations {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 70%;
+      grid-template-columns: 25% 70%;
+  grid-gap: 5%;
+}
+
+#container #presentation #me #about_informations #picture img {
+  border-radius: 50%;
+  -webkit-animation-name: vagues-image;
+          animation-name: vagues-image;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+#container #presentation #me #about_informations #picture img:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 0.5px rgba(255, 255, 255, 0.5);
+          box-shadow: 2px 2px 0.5px rgba(255, 255, 255, 0.5);
+}
+
+#container #presentation #me #about_informations #about #hey {
+  font-size: 15em;
+}
+
+#container #presentation #me #about_informations #about #my_name {
+  font-size: 3em;
+}
+
+#container #presentation #me #about_informations #about #love_code {
+  font-size: 3em;
+}
+
+#container #presentation #me #university {
+  position: absolute;
+  bottom: 0;
+  margin: 5px auto;
+  font-weight: bolder;
+}
+
+#container #presentation #header-links {
+  position: absolute;
+  top: 15%;
+  left: 75%;
+  text-align: right;
+}
+
+#container #presentation #header-links ul li {
+  margin: 30px 0;
+}
+
+#container #presentation #header-links ul li a {
+  border: 1px solid orange;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#container #presentation #header-links ul li a::after {
+  content: "👈";
+}
+
+#container #presentation #header-links ul li a:hover {
+  -webkit-animation-name: a-l-r;
+          animation-name: a-l-r;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+}
+
+#container #focusing {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#fff));
+  background-image: linear-gradient(to top, #fff 0%, #fff 100%);
+  height: 100vh;
+  color: black;
+  padding: 3em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+#container #focusing .section-title {
+  margin: auto 20px;
+}
+
+#container #focusing .section-title h1 {
+  font-size: 5em;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#container #focusing .technologies {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+}
+
+#container #focusing .technologies .technology {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#container #focusing .technologies .technology .tech-meta {
+  text-align: center;
+}
+
+#container #focusing .technologies .technology div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#container #focusing .technologies .technology div .tech-name {
+  font-size: 1.4em;
+  font-weight: bolder;
+}
+
+#container #focusing .technologies .technology div blockquote {
+  font-size: 1.5em;
+}
+
+#container #focusing .technologies .technology div blockquote::before {
+  content: "\"";
+  font-size: 2em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#container #fun {
+  height: 80vh;
+  color: white;
+  background-color: black;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#container #fun .section-title {
+  margin: auto;
+}
+
+#container #fun .section-title h1 {
+  font-size: 3em;
+  margin: 10px 0;
+  text-shadow: 3px 3px rgba(255, 255, 255, 0.3);
+}
+
+#container #fun .section-aside {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 30% 30%;
+      grid-template-rows: 30% 30%;
+  height: 50%;
+}
+
+#container #fun .section-aside div {
+  margin: auto;
+}
+
+#container #fun .section-aside div a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+}
+
+#container #web #web-intro {
+  height: 100vh;
+  text-align: center;
+}
+
+#container #web #web-intro h1 {
+  position: relative;
+  margin: 2%;
+  font-size: 4em;
+}
+
+#container #web #web-intro p {
+  font-size: 2em;
+}
+
+#container #web #web-types {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+#container #web #web-types div {
+  text-align: center;
+}
+
+#container #web #web-types div h1 {
+  padding-top: 20%;
+}
+
+#container #web #web-types #frontend-intro {
+  border-right: 1px solid silver;
+}
+
+#container #web #web-types #frontend-intro .links ul {
+  margin: auto;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#container #web #web-types #frontend-intro .links ul li {
+  width: 50%;
+  margin: 8px auto;
+}
+
+#container #web #web-types #backend-intro .links ul {
+  margin: auto;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#container #web #web-types #backend-intro .links ul li {
+  width: 50%;
+  margin: 8px auto;
+}
+
+#container #web #web-services {
+  height: 100vh;
+}
+
+#container #web #web-services .section-title {
+  margin-top: 5%;
+  text-align: center;
+}
+
+#container #web #web-services .section-title h1 {
+  font-size: 5em;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#container #web #web-services .container {
+  margin-top: 5%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+#container #web #web-services .container div {
+  text-align: center;
+}
+
+#container #web #web-services .container .graphql {
+  border-right: 1px solid silver;
+}
+
+#container #databases {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#container #databases .section-title {
+  padding-left: 20%;
+}
+
+#container #databases .section-title h1 {
+  font-size: 3em;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#container #databases .section-aside {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+#container #databases .section-aside div {
+  text-align: center;
+}
+
+#container #system {
+  height: 100vh;
+  text-align: center;
+}
+
+#container #system .section-title h1 {
+  font-size: 3em;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#container #system .section-aside {
+  margin-top: 7%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+@-webkit-keyframes vagues-image {
+  0% {
+    position: relative;
+    top: 0px;
+  }
+  25% {
+    position: relative;
+    top: 3px;
+  }
+  50% {
+    position: relative;
+    top: 0px;
+  }
+  75% {
+    position: relative;
+    top: -3px;
+  }
+  100% {
+    position: relative;
+    top: 0px;
+  }
+}
+
+@keyframes vagues-image {
+  0% {
+    position: relative;
+    top: 0px;
+  }
+  25% {
+    position: relative;
+    top: 3px;
+  }
+  50% {
+    position: relative;
+    top: 0px;
+  }
+  75% {
+    position: relative;
+    top: -3px;
+  }
+  100% {
+    position: relative;
+    top: 0px;
+  }
+}
+
+@-webkit-keyframes a-l-r {
+  0% {
+    position: relative;
+    left: 0%;
+  }
+  20% {
+    position: relative;
+    left: -5%;
+  }
+  100% {
+    position: relative;
+    left: 0%;
+  }
+}
+
+@keyframes a-l-r {
+  0% {
+    position: relative;
+    left: 0%;
+  }
+  20% {
+    position: relative;
+    left: -5%;
+  }
+  100% {
+    position: relative;
+    left: 0%;
+  }
+}
+/*# sourceMappingURL=main.css.map */

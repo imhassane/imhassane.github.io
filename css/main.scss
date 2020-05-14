@@ -1,0 +1,432 @@
+// Quelques couleurs de base
+$presentation-image: linear-gradient(to top, #fff 0%, #fff 100%);
+$focusing-image: linear-gradient(to top, #fff 0%, #fff 100%);
+$social-angle: -90deg;
+
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family:  'Poppins', serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.see-my-work {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: .1);
+        box-shadow: 2px 2px 1px rgba($color: #000, $alpha: .9);
+    }
+}
+
+#container {
+
+    #presentation {
+        height: 100vh;
+        background-image: $presentation-image;
+        display: grid;
+        grid-template-columns: 10% 80%;
+        grid-gap: 20px;
+        align-items: center;
+        color: black;
+
+        #social {
+            height: 100%;
+            ul {
+                height: 100%;
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+                list-style: none;
+                li {
+                    transform: rotate($social-angle);
+                    -webkit-transform: rotate($social-angle);
+                    -moz-transform: rotate($social-angle);
+                    -ms-transform: rotate($social-angle);
+                    -o-transform: rotate($social-angle);
+                    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+                    margin: auto;
+
+                    border: 2px solid black;
+                    padding: 1em;
+                    width: 85%;
+                    text-align: center;
+                    border-radius: 4px;
+                    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgba($color: #000000, $alpha: .1);
+                        box-shadow: 2px 2px .5px rgba($color: #fff, $alpha: .9);
+                    }
+                
+                    a {
+                        color: black;
+                        text-decoration: none;
+                        
+                        font-weight: bolder;
+                    }
+                }
+                
+            }
+        }
+
+        #me {
+            width: 100%;
+
+            #about_informations {
+                display: grid;
+                grid-template-columns: 25% 70%;
+                grid-gap: 5%;
+
+                #picture {
+                    img {
+                        border-radius: 50%;
+
+                        &:hover {
+                            cursor: pointer;
+                            box-shadow: 2px 2px .5px rgba($color: #fff, $alpha: .5);
+                        }
+
+                        animation-name: vagues-image;
+                        animation-duration: 4s;
+                        animation-iteration-count: infinite;
+                    }
+                }
+
+                #about {
+                    #hey {
+                        font-size: 15em;
+                    }
+
+                    #my_name {
+                        font-size: 3em;
+                    }
+
+                    #love_code {
+                        font-size: 3em;
+                    }
+                }
+            }
+
+            #university {
+                position: absolute;
+                bottom: 0;
+                margin: 5px auto;
+                
+                font-weight: bolder;
+            }
+        }
+
+        #header-links {
+            position: absolute;
+            top: 15%;
+            left: 75%;
+            text-align: right;
+
+            ul {
+                li {
+                    margin: 30px 0;
+                    
+                    a {
+                        border: 1px solid orange;
+                        padding: 10px;
+                        border-radius: 5px;
+                        &::after {
+                            content: "👈"
+                        }
+                        &:hover {
+                            animation-name: a-l-r;
+                            animation-duration: .5s;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #focusing {
+        background-image: $focusing-image;
+        height: 100vh;
+        color: black;
+        padding: 3em;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .section-title {
+            margin: auto 20px;
+            h1 {
+                font-size: 5em;
+                text-shadow: 3px 3px rgba($color: #000, $alpha: .3);
+            }
+        }
+
+        .technologies {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            
+            .technology {
+                height: 100%;
+                display: flex;
+                justify-content: space-around;
+                
+                .tech-meta {
+                    text-align: center;
+                }
+
+                div {
+                    flex: 1;
+
+                   .tech-name {
+                       
+                       font-size: 1.4em;
+                       font-weight: bolder;
+                   }
+
+                   blockquote {
+                       font-size: 1.5em;
+
+                       &::before {
+                           content: "\"";
+                           font-size: 2em;
+                           font-family: 'Times New Roman', Times, serif;
+                       }
+                   }
+                }
+            }
+        }
+    }
+
+    #fun {
+        height: 80vh;
+        color: white;
+        background-color: black;
+
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        align-items: center;
+
+        .section-title {
+            margin: auto;
+            h1 {
+                font-size: 3em;
+                margin: 10px 0;
+                text-shadow: 3px 3px rgba($color: #fff, $alpha: .3);
+            }
+        }
+
+        .section-aside {
+            display: grid;
+            grid-template-rows: 30% 30%;
+            height: 50%;
+            div {
+                margin: auto;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                    border: 1px solid white;
+                    padding: 10px;
+                }
+            }
+        }
+
+    }
+
+    #web {
+
+        #web-intro {
+            height: 100vh;
+            text-align: center;
+            
+            h1 {
+                position: relative;
+                margin: 2%;
+                font-size: 4em;
+            }
+
+            p {
+                font-size: 2em;
+            }
+        }
+
+        #web-types {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            div {
+                text-align: center;
+                h1 {
+                    padding-top: 20%;
+                }
+            }
+
+            #frontend-intro {
+                border-right: 1px solid silver;
+                
+                .links {
+                    ul {
+                        margin: auto;
+                        width: 80%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                        
+                        li {
+                            width: 50%;
+                            margin: 8px auto;
+                        }
+                    }
+                }
+            }
+            #backend-intro {
+                .links {
+                    ul {
+                        margin: auto;
+                        width: 80%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+                        
+                        li {
+                            width: 50%;
+                            margin: 8px auto;
+                        }
+                    }
+                }
+            }
+        }
+
+        #web-services {
+            height: 100vh;
+            .section-title {
+                margin-top: 5%;
+                text-align: center;
+                h1 {
+                    font-size: 5em;
+                    text-shadow: 3px 3px rgba($color: #000, $alpha: .3);
+                }
+            }
+            .container {
+                margin-top: 5%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                div {
+                    text-align: center;
+                }
+
+                .graphql {
+                    border-right: 1px solid silver;
+                }
+            }
+        }
+
+    }
+
+    #databases {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+
+        .section-title {
+            padding-left: 20%;
+            h1 {
+                font-size: 3em;text-shadow: 3px 3px rgba($color: #000, $alpha: .3);
+            }
+        }
+
+        .section-aside {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+
+            div {
+                text-align: center;
+            }
+        }
+    }
+
+    #system {
+        height: 100vh;
+        text-align: center;
+
+        .section-title {
+            h1 {
+                font-size: 3em;
+                text-shadow: 3px 3px rgba($color: #000, $alpha: .3);
+            }
+        }
+
+        .section-aside {
+            margin-top: 7%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+@keyframes vagues-image {
+    0% {
+        position: relative;
+        top: 0px;
+    }
+
+    25% {
+        position: relative;
+        top: 3px;
+    }
+
+    50% {
+        position: relative;
+        top: 0px
+    }
+
+    75% {
+        position: relative;
+        top: -3px
+    }
+
+    100% {
+        position: relative;
+        top: 0px;
+    }
+}
+
+@keyframes a-l-r {
+    0% {
+        position: relative;
+        left: 0%;
+    }
+
+    20% {
+        position: relative;
+        left: -5%;  
+    }
+
+    100% {
+        position: relative;
+        left: 0%;
+    }
+}
