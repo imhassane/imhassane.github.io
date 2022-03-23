@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Jost:wght@200;400&family=Lobster&family=Raleway:wght@100;300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet"> 
+    <link href="./dist/main.css" rel="stylesheet">
+    <script src="./src/main.js" defer></script>
+    <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+    <title>Médiathèque</title>
+
+    <style>
+        @media screen and (min-width: 1000px) {
+            .media-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(6, 400px);
+                grid-column-gap: 10px;
+                grid-row-gap: 10px;
+            }
+
+            .media-grid > div > .media-cover {
+                height: 200px;
+            }
+
+            .media-card {
+                width: 100%;
+            }
+
+            .media-grid > div > .media-data {
+                height: 200px;
+            }
+
+            .elem-1 { grid-area: 1 / 1 / 2 / 2; }
+            .elem-2 { grid-area: 1 / 2 / 2 / 3; }
+            .elem-3 { grid-area: 1 / 3 / 2 / 5; }
+            .elem-4 { grid-area: 2 / 1 / 3 / 3; }
+            .elem-5 { grid-area: 2 / 3 / 3 / 4; }
+            .elem-6 { grid-area: 2 / 4 / 3 / 5; }
+            .elem-7 { grid-area: 3 / 1 / 4 / 3; }
+            .elem-8 { grid-area: 3 / 3 / 4 / 5; }
+            .elem-9 { grid-area: 4 / 1 / 5 / 2; }
+            .elem-10 { grid-area: 4 / 2 / 5 / 3; }
+            .elem-11 { grid-area: 4 / 3 / 5 / 4; }
+            .elem-12 { grid-area: 4 / 4 / 5 / 5; }
+            .elem-13 { grid-area: 5 / 1 / 7 / 2; }
+            .elem-14 { grid-area: 6 / 2 / 7 / 3; }
+            .elem-15 { grid-area: 5 / 2 / 6 / 3; }
+            .elem-16 { grid-area: 5 / 3 / 6 / 5; }
+            .elem-17 { grid-area: 6 / 3 / 7 / 4; }
+            .elem-18 { grid-area: 6 / 4 / 7 / 5; }
+        }
+    </style>
+</head>
+<body>
+    <header class="padding lg:px-10 bg-black w-screen border-b border-white">
+        <nav class="relative flex justify-between items-center">
+          <a class="text-2xl text-white font-bold" href="./index.html">
+            <img class="h-7" src="https://shuffle.dev/zospace-assets/logos/zospace-logo.svg" alt="" width="auto">
+          </a>
+          <div class="flex gap-3 items-center">
+            <div class="w-[16px]">
+              <img id="dark-mode-toggler" src="./src/img/night-mode.svg" class="cursor-pointer" alt="" width="16px" height="16px" />
+            </div>
+            <div class="lg:hidden">
+              <span class="cursor-pointer p-1 navbar-burger bg-transparent" id="navbar-burger-btn">
+                <svg class="w-10 h-3" width="39" height="13" viewBox="0 0 39 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="39" height="2" rx="1" fill="#C4C4C4"></rect><rect x="19" y="11" width="20" height="2" rx="1" fill="#C4C4C4"></rect></svg>
+              </span>
+            </div>
+          </div>
+          <div class="hidden lg:block absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <ul class="flex items-center text-white space-x-5">
+              <li><a class="md-header-link" href="./aides/index.html">Où trouver de l'aide ?</a></li>
+              <li><a class="md-header-link" href="./blog.html">Blog</a></li>
+              <li><a class="md-header-link" href="./faq.html">FAQ</a></li>
+              <li><a class="md-header-link" href="./medias.html">Médias</a></li>
+              <li><a class="md-header-link" href="./dons.html">Dons</a></li>
+              <li><a class="md-header-link" href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+        </nav>
+        <div id="mobile-nav" class="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
+          <div id="mobile-nav-backdrop" class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-80"></div>
+          <nav class="relative flex flex-col py-8 h-full w-full bg-light dark:bg-black-light  overflow-y-auto">
+            <div>
+              <ul class="px-4">
+                <li><a class="header-link" href="./aides/index.html">Où trouver de l'aide ?</a></li>
+                <li><a class="header-link" href="./blog.html">Blog</a></li>
+                <li><a class="header-link" href="./faq.html">FAQ</a></li>
+                <li><a class="header-link" href="./medias.html">Médias</a></li>
+                <li><a class="header-link" href="./dons.html">Dons</a></li>
+                <li><a class="header-link" href="./contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </header>
+    <main class="container">
+        <h1>Médiathèque</h1>
+
+        <form class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full md:w-[850px] mx-auto pb-3" method="post" action="#">
+            <div>
+                <select name="country" id="country" class="dark:bg-black-light dark:text-white p-3">
+                    <option value="none">Choisir un pays</option>
+                    <option value="224">Guinée</option>
+                    <option value="225">Côte d'Ivoire</option>
+                </select>
+            </div>
+            <div>
+                <select name="language" id="language" class="dark:bg-black-light dark:text-white">
+                    <option value="none">Choisir une langue</option>
+                    <option value="soussou">Soussou</option>
+                    <option value="pulaar">Pulaar</option>
+                    <option value="maninka">Malinké</option>
+                </select>
+            </div>
+            <div>
+                <select name="type" id="type" class="dark:bg-black-light dark:text-white">
+                    <option value="all">Tout</option>
+                    <option value="podcast">Podcast</option>
+                    <option value="video">Vidéo</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="dark:bg-black-light">Appliquer</button>
+            </div>
+        </form>
+
+        <div class="media-grid mt-10 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="media-card elem-1 flex flex-col gap-3">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full h-48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-2 flex flex-col gap-3">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full h-48 md:h-64" src="https://images.unsplash.com/photo-1504287797851-afaf81f634d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-3 flex flex-col gap-3">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full h-48 md:h-64" src="https://images.unsplash.com/photo-1626111584217-3bbb017216d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGZlbWluaXNtfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-4 flex flex-col gap-3">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full h-48 md:h-64" src="https://images.unsplash.com/photo-1628825453863-ccfe2dcc4c70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-5 flex flex-col gap-3">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full h-48 md:h-64" src="https://images.unsplash.com/photo-1505682614136-0a12f9f7beea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-6 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1592829238140-d5b194da621f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-7 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1591758722639-807dabf1254c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-8 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-9 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1591189824705-d38677765d6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=803&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-10 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-11 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1591189596798-6282ba89ebf0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-12 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-13 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-14 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1591189824705-d38677765d6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=803&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-15 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-16 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1591189596798-6282ba89ebf0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-17 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-card elem-18 flex flex-col">
+                <div class="media-cover h-48 md:h-64 overflow-hidden">
+                    <img class="object-cover object-center w-full fl48 md:h-64" src="https://images.unsplash.com/photo-1516557974923-389d2153e52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80" alt="" />
+                </div>
+                <div class="media-data mt-2 h-36">
+                    <p class="font-semibold dark:text-white uppercase">Mission #1: Abidjan</p>
+                    <div class="text-xs font-light mt-2">
+                        Ce Dimanche, nous étions dans la plus grande ville de Côte d'Ivoire en visite. Nous avons pu visiter un
+                        centre de santé où sont formées des medecins qui prendrons la relève
+                    </div>
+                    <div class="mt-5 py-2 text-xs font-light">
+                        <a href="#" class="p-3 rounded dark:bg-black-light bg-gray-400">Voir la vidéo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 flex gap-4 justify-end items-center">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+    </main>
+</body>
+</html>

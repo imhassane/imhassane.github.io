@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    --bg-main: #0f0f11;
+
+    font-family: 'Raleway', sans-serif;
+}
+
+.hide-scroll-bar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+    display: none;
+}
+
+@layer base {
+    h1, h2 {
+        @apply font-bold text-center dark:text-white mb-8;
+    }
+
+    h1 {
+        @apply text-3xl md:text-7xl;
+    }
+
+    h2 {
+        @apply text-xl md:text-4xl;
+    }
+
+    select {
+        @apply px-4 py-3 dark:bg-black-light dark:text-white bg-gray-400 w-full rounded;
+    }
+
+    button:not(.navbar-burger), input[type=button] {
+        @apply dark:bg-black dark:text-white bg-gray-500 px-4 py-3 rounded text-sm;
+    }
+}
+
+@layer components {
+    body {
+        @apply bg-gray-200 dark:bg-black dark:text-white w-screen flex flex-col items-center overflow-x-hidden;
+    }
+
+    .bg-light {
+        @apply bg-gray-200;
+    }
+
+    .bg-light-dark {
+        @apply bg-gray-300;
+    }
+
+    .padding {
+        @apply p-4;
+    }
+
+    .container {
+        @apply px-2 md:px-5 xl:px-24 py-6 md:py-5 xl:py-20;
+    }
+
+    .header-link {
+        @apply block pl-4 py-4 rounded-xl text-sm dark:text-white;
+    }
+
+    .md-header-link {
+        @apply text-white text-sm;
+    }
+
+    /* CARDS */
+    .card {
+        @apply flex flex-col md:flex-row gap-4 dark:bg-black-light  dark:text-gray-300;
+    }
+
+    .card-data {
+        @apply p-3 w-64;
+    }
+
+    .card-cover {
+        @apply object-center object-cover w-full md:w-48 h-48 md:rounded-l;
+    }
+
+    .card-title {
+        @apply font-semibold uppercase;
+    }
+
+    .card-description {
+        @apply font-light text-xs lowercase mt-2;
+    }
+
+    .card-links {
+        @apply flex items-center gap-3;
+    }
+
+    .faq-card {
+        @apply rounded px-4 md:px-12 py-3 md:py-8 bg-light-dark dark:bg-black-light;
+    }
+
+    .faq-card-header {
+        @apply text-lg md:text-2xl font-bold flex gap-3;
+    }
+
+    .faq-card-header {
+        @apply flex justify-between mb-2;
+    }
+
+    .blog-card {
+
+    }
+
+    .blog-card-cover-block {
+        @apply relative h-72;
+    }
+
+    .blog-card-cover {
+        @apply object-cover object-center max-h-full w-full rounded-t;
+    }
+
+    .blog-card-date {
+        @apply absolute bottom-5 left-5 p-3 rounded-b-3xl bg-gray-300 dark:bg-black-light dark:text-white flex flex-col justify-center border-t-4 border-black-light;
+    }
+
+    .blog-card-data {
+        @apply py-5;
+    }
+
+    .blog-card-title {
+        @apply text-xl font-bold mb-3;
+    }
+
+    .blog-card-description {
+        @apply text-sm text-gray-800 text-justify dark:text-white;
+    }
+
+    /** FORMS */
+    .form-group {
+        @apply text-sm flex flex-col gap-y-2;
+    }
+
+    .form-group > input, select {
+        @apply rounded bg-gray-300 dark:bg-black dark:text-white px-3 py-3;
+    }
+}
+

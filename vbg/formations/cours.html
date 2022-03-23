@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Jost:wght@200;400&family=Lobster&family=Raleway:wght@100;300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet"> 
+    <link href="./dist/main.css" rel="stylesheet">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Apprendre à réagir face aux #VBG</title>
+</head>
+<body x-data class="h-screen w-screen dark:bg-black dark:text-white bg-gray-200 overflow-x-hidden overflow-y-hidden hide-scroll-bar">
+
+    <template x-if="$store.course.course !== null && $store.course.current.chapterNumber === 0">
+        <div class="container min-h-screen w-screen">
+            <h1 class="text-left" x-text="$store.course.course.name"></h1>
+            <div class="md:p-8 text-sm bg-gray-300 dark:bg-black-light rounded shadow-lg" x-text="$store.course.course.description"></div>
+            <div class="mt-5">
+                <button @click="$store.course.loadChapter()">Commencer le cours</button>
+            </div>
+        </div>
+    </template>
+
+    <template x-if="$store.course.course && $store.course.course.chapters.length">
+        <div>
+            <template x-for="(chapter, id) in $store.course.course.chapters" :key="id">
+                <section class="h-screen w-screen md:p-10">
+                    <h2 class="text-left" x-text="chapter.name"></h2>
+                </section>
+            </template>
+        </div>
+    </template>
+    
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('course', {
+                course: {
+                    name: "Apprendre à réagir face aux #VBG",
+                    description: `
+                    Dans ce cours, vous apprendrez comment réagir si vous vous trouvez dans une situation désagréable.
+                    Nous verrons à travers les chapitres des cours des informations simples et précises qui pourront
+                    éventuellement vous sauver la vie.
+                    `,
+                    chapters: [
+                        { 
+                            id: 1, name: "Demandez de l'aide à votre entourage",
+                            validated: false, correctAnswers: 0, totalAnswers: 2,
+                            faq: [
+                                { 
+                                    id: 1, validated: false,
+                                    question: "Que faire en premier si vous êtes harcelée ?",
+                                    correctAnswer: 1,
+                                    answers: [
+                                        { id: 1, content: "Demander de l'aide à mon entourage" },
+                                        { id: 2, content: "Essayer de discuter avec la personne sur un sujet personnel" },
+                                        { id: 3, content: "Fuir" },
+                                    ],
+                                },
+                                { 
+                                    id: 1, validated: false,
+                                    question: "Que faire en premier si vous êtes harcelée ?",
+                                    correctAnswer: 1,
+                                    answers: [
+                                        { id: 1, content: "Demander de l'aide à mon entourage" },
+                                        { id: 2, content: "Essayer de discuter avec la personne sur un sujet personnel" },
+                                        { id: 3, content: "Fuir" },
+                                    ],
+                                },
+                            ]
+                        },
+                        { 
+                            id: 2, name: "Essayez de discuter avec la personne sur un sujet personnel",
+                            validated: false, correctAnswers: 0, totalAnswers: 2,
+                            faq: [
+                                { 
+                                    id: 1, validated: false,
+                                    question: "Que faire en premier si vous êtes harcelée ?",
+                                    correctAnswer: 1,
+                                    answers: [
+                                        { id: 1, content: "Demander de l'aide à mon entourage" },
+                                        { id: 2, content: "Essayer de discuter avec la personne sur un sujet personnel" },
+                                        { id: 3, content: "Fuir" },
+                                    ],
+                                },
+                                { 
+                                    id: 1, validated: false,
+                                    question: "Que faire en premier si vous êtes harcelée ?",
+                                    correctAnswer: 1,
+                                    answers: [
+                                        { id: 1, content: "Demander de l'aide à mon entourage" },
+                                        { id: 2, content: "Essayer de discuter avec la personne sur un sujet personnel" },
+                                        { id: 3, content: "Fuir" },
+                                    ],
+                                },
+                            ]
+                         },
+                        { 
+                            id: 3, name: "Fuyez si vous pouvez",
+                            validated: false, correctAnswers: 0, totalAnswers: 2,
+                            faq: [
+                                { 
+                                    id: 1, validated: false,
+                                    question: "Que faire en premier si vous êtes harcelée ?",
+                                    correctAnswer: 1,
+                                    answers: [
+                                        { id: 1, content: "Demander de l'aide à mon entourage" },
+                                        { id: 2, content: "Essayer de discuter avec la personne sur un sujet personnel" },
+                                        { id: 3, content: "Fuir" },
+                                    ],
+                                },
+                                { 
+                                    id: 1, validated: false,
+                                    question: "Que faire en premier si vous êtes harcelée ?",
+                                    correctAnswer: 1,
+                                    answers: [
+                                        { id: 1, content: "Demander de l'aide à mon entourage" },
+                                        { id: 2, content: "Essayer de discuter avec la personne sur un sujet personnel" },
+                                        { id: 3, content: "Fuir" },
+                                    ],
+                                },
+                            ]
+                         },
+                    ],
+                    correctAnswers: 0, totalAnswers: 6, finished: false,
+                },
+                current: {
+                    chapter: null,
+                    faq: null,
+                    chapterNumber: 0,
+                },
+
+                incrementNote() {
+                    this.course.correctAnswers += 1;
+                    if(this.course.correctAnswers > this.course.totalAnswers) this.course.correctAnswers = this.course.totalAnswers;
+                },
+                decreaseNote() {
+                    this.course.correctAnswers -= 1;
+                    if(this.course.correctAnswers < 0) this.course.correctAnswers = 0;
+                },
+                loadChapter() {
+                    if(!this.course.chapters.length) return alert("Ce cours n'a aucun chapitre");
+
+                    if(!this.current.chapter) {
+                        this.current.chapter = this.course.chapters[0];
+                        this.chapterNumber = 1;
+
+                        this.scrollToNextChapter();
+                    } else {
+                        if(this.chapterNumber === this.course.chapters.length) {
+                            this.course.finished = true;
+                            localStorage.removeItem('course-position');
+                            return alert("Vous avez fini le cours");
+                        } else {
+                            this.current.chapter = this.course.chapters[this.chapterNumber];
+                            this.chapterNumber++;
+                            this.scrollToNextChapter();
+                        }
+                    }
+                },
+                scrollToNextChapter() {
+                    const container = document.documentElement;
+                    const bodyHeight = document.querySelector('body').clientHeight;
+                    container.scrollTop += bodyHeight;
+
+                    // On enregistre la position actuelle.
+                    localStorage.setItem('course-position', container.scrollTop);
+                }
+            });
+        });
+
+        // On charge le cours à la dernière position.
+        (() => {
+            let coursePosition = localStorage.getItem('course-position');
+
+            if(!coursePosition) return;
+            coursePosition = parseInt(coursePosition);
+            document.documentElement.scrollTop = coursePosition;
+        })();
+    </script>
+</body>
+</html>

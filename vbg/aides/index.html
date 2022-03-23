@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Jost:wght@200;400&family=Lobster&family=Raleway:wght@100;300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet"> 
+    <link href="../dist/main.css" rel="stylesheet">
+    <script src="./src/main.js" defer></script>
+    <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+    <title>Trouver de l'aide</title>
+
+    <style>
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            filter:grayscale(100%);
+        }
+
+        #video-background > video {
+            width: 100vw; overflow: hidden;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body x-data="data">
+    <div id="video-background">
+        <video playsinline autoplay muted loop poster="cake.jpg">
+            <source src="../src/vid/harassment.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+    </div>
+
+    <header class="padding lg:px-10 bg-black w-screen border-b border-white">
+        <nav class="relative flex justify-between items-center">
+          <a class="text-2xl text-white font-bold" href="../index.html">
+            <img class="h-7" src="https://shuffle.dev/zospace-assets/logos/zospace-logo.svg" alt="" width="auto">
+          </a>
+          <div class="flex gap-3 items-center">
+            <div class="w-[16px]">
+              <img id="dark-mode-toggler" src="./src/img/night-mode.svg" class="cursor-pointer" alt="" width="16px" height="16px" />
+            </div>
+            <div class="lg:hidden">
+              <span class="cursor-pointer p-1 navbar-burger bg-transparent" id="navbar-burger-btn">
+                <svg class="w-10 h-3" width="39" height="13" viewBox="0 0 39 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="39" height="2" rx="1" fill="#C4C4C4"></rect><rect x="19" y="11" width="20" height="2" rx="1" fill="#C4C4C4"></rect></svg>
+              </span>
+            </div>
+          </div>
+          <div class="hidden lg:block absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <ul class="flex items-center text-white space-x-5">
+              <li><a class="md-header-link" href="./index.html">Où trouver de l'aide ?</a></li>
+              <li><a class="md-header-link" href="../blog.html">Blog</a></li>
+              <li><a class="md-header-link" href="../faq.html">FAQ</a></li>
+              <li><a class="md-header-link" href="../medias.html">Médias</a></li>
+              <li><a class="md-header-link" href="../dons.html">Dons</a></li>
+              <li><a class="md-header-link" href="../contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+        </nav>
+        <div id="mobile-nav" class="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
+          <div id="mobile-nav-backdrop" class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-80"></div>
+          <nav class="relative flex flex-col py-8 h-full w-full bg-light dark:bg-black-light  overflow-y-auto">
+            <div>
+              <ul class="px-4">
+                <li><a class="header-link" href="./index.html">Où trouver de l'aide ?</a></li>
+                <li><a class="header-link" href="../blog.html">Blog</a></li>
+                <li><a class="header-link" href="../faq.html">FAQ</a></li>
+                <li><a class="header-link" href="../medias.html">Médias</a></li>
+                <li><a class="header-link" href="../dons.html">Dons</a></li>
+                <li><a class="header-link" href="../contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="min-h-screen">
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="xl:w-1/3 bg-light dark:bg-black-light rounded-lg shadow-xl p-4 md:p-10">
+                    <h3 class="font-bold text-lg mb-4">Trouver de l'aide à côté de vous</h3>
+    
+                    <div class="text-sm font-light">
+                        <p>Entrez vos informations pour avoir la liste des centres d'aide à côté de vous</p>
+                    </div>
+    
+                    <div class="mt-5 flex flex-col gap-3">
+                        <div class="form-group">
+                            <label>Pays</label>
+                            <select name="country" x-on:change="setCountry">
+                                <option value="none">Choisissez un pays</option>
+                                <template x-for="(c, id) in countries">
+                                    <option :value="c.id" x-text="c.name"></option>
+                                </template>
+                            </select>
+                        </div>
+                        <template x-if="country">
+                            <div class="form-group">
+                                <label>Ville</label>
+                                <select x-on:change="setCity">
+                                    <option value="none">Choisissez une ville</option>
+                                    <template x-for="(c, id) in country.cities">
+                                        <option :value="c.id" x-text="c.name"></option>
+                                    </template>
+                                </select>
+                            </div>
+                        </template>
+                        <div class="mt-2">
+                            <button type="submit" class="w-full" @click="onFetchInfos">Trouver les informations</button>
+                        </div>
+                    </div>
+                </div>
+                <template x-if="infos.phones.length">
+                    <div class="flex-1 bg-light dark:bg-black-light rounded-lg shadow-xl p-4 md:p-10">
+                        <h3 class="font-bold text-lg">Numéros à appeler en cas de danger</h3>
+                        <div class="mt-5 bg-light-dark dark:bg-black">
+                            <div class="flex pb-1 border-b dark:border-black-light p-3 rounded-t gap-3">
+                                <div class="w-24 md:w-64">Téléphone</div>
+                                <div class="flex-1">Contact</div>
+                            </div>
+                            <template x-for="(ph, id) in infos.phones" :key="id">
+                                <div class="flex p-3 gap-3  border-b border-gray-300 dark:border-black-light text-sm font-light">
+                                    <div class="w-24 md:w-64" x-text="ph.phone"></div>
+                                    <div class="flex-1" x-text="ph.name"></div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Associations -->
+        <section x-show="city.associations.length">
+            <h1 class="text-left text-white">Des associations dans votre ville</h1>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-4 gap-5 text-white">
+                <template x-for="(a, id) in city.associations">
+                    <div class="flex flex-col md:flex-row bg-black-light shadow-lg rounded-lg">
+                        <div class="w-full md:w-48 h-48 overflow-hidden">
+                            <img :src="a.cover" alt="" class="w-full h-full object-cover object-center rounded-l-lg" />
+                        </div>
+                        <div class="flex-1 p-4">
+                            <h3 x-text="a.name" class="font-bold text-xl mb-4"></h3>
+                            <div class="flex font-light mb-4 gap-5">
+                                <p class="flex">
+                                    <img src="../src/img/phone.png" width="15px" height="15px" alt="">
+                                    <span x-text="a.phone" class="ml-2"></span>
+                                </p>
+                                <p class="flex">
+                                    <img src="../src/img/office.png" width="15px" height="15px" alt="">
+                                    <span x-text="a.address"></span>
+                                </p>
+                            </div>
+                            <div class="mt-3 font-light text-sm" x-text="a.description"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Hopitaux -->
+        <section x-show="city.hospitals.length" class="mt-16">
+            <h1 class="text-left text-white">Des hopitaux !</h1>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-5">
+                <template x-for="(ho, id) in city.hospitals" :key="id">
+                    <div class="bg-black-light text-white rounded-lg p-5 shadow">
+                        <h3 x-text="ho.name" class="text-xl font-bold"></h3>
+                    </div>
+                </template>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('data', () => ({
+                phoneNumbers: [
+                    { name: "Gendarmerie de Kipé", phone: "+224 623-456-098", city: 1 },
+                    { name: "Gendarmerie de Kissosso", phone: "+224 655-456-098", city: 1 },
+                    { name: "Gendarmerie de Hamdallaye", phone: "+224 665-456-098", city: 1 },
+                    { name: "Gendarmerie du centre", phone: "+224 623-456-098", city: 2 },
+                    { name: "Centre de santé Teli Diallo", phone: "+224 655-456-098", city: 2 },
+                    { name: "Urgences de Labé", phone: "+224 665-456-098", city: 2 },
+                    { name: "Croix-Rouge", phone: "+225 623-456-098", city: 3 },
+                    { name: "Centre de santé de Yopougon", phone: "+225 655-456-098", city: 4 },
+                    { name: "Hopital de la Cavale", phone: "+225 665-456-098", city: 4 },
+                ],
+                countries: [
+                    { code: 224, name: "Guinée", cities: [ { id: 1, name: "Conakry" }, { id: 2, name: "Labé" } ] },
+                    { code: 225, name: "Côte d'Ivoire", cities: [ { id: 3, name: "Yopougon" }, { id: 4, name: "Abidjan" }]}
+                ],
+                country: null,
+                city: null,
+                infos: { phones: [] },
+
+                setCountry({ target: { value } }) {
+                    const [country] = this.countries.filter(c => c.name === value);
+                    this.country = country;
+                },
+                setCity({ target: { value }}) {
+                    if(!this.country) return;
+
+                    const [city] = this.country.cities.filter(c => c.id == value);
+                    if(!city) return;
+                    this.city = {
+                        ...city,
+                        associations: [
+                            { 
+                                id: 1, name: "Croix-rouge", 
+                                cover: "https://images.unsplash.com/photo-1517488629431-6427e0ee1e5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+                                description: "Croix-rouge est une association reconnue dans le monde, nous apportons les premiers secours pour toute personne victime de violences",
+                                address: "Coleyah centre", phone: "+224 625-545-890"
+                             },
+                            { 
+                                id: 2, name: "Stop #VBG", 
+                                cover: "https://images.unsplash.com/photo-1531844251246-9a1bfaae09fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=916&q=80",
+                                description: `
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Possimus ex, explicabo voluptatem debitis eaque voluptate
+                                    blanditiis aut obcaecati nesciunt dolore, corporis ad itaque
+                                    odit iste. Molestiae amet corrupti beatae laborum.
+                                `, address: "Lambanyi", phone: "+224 625-458-098"
+                             },
+                            { id: 3, name: "Associations Femmes en danger", cover: "https://images.unsplash.com/photo-1571799610292-935ff425ba12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=726&q=80",
+                                description: `
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Possimus ex, explicabo voluptatem debitis eaque voluptate
+                                    blanditiis aut obcaecati nesciunt dolore, corporis ad itaque
+                                    odit iste. Molestiae amet corrupti beatae laborum.
+                                `, address: "Lambanyi", phone: "+224 625-458-098"
+                            },
+                            { id: 4, name: "Les amies féministes", cover: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=449&q=80",
+                                description: `
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Possimus ex, explicabo voluptatem debitis eaque voluptate
+                                    blanditiis aut obcaecati nesciunt dolore, corporis ad itaque
+                                    odit iste. Molestiae amet corrupti beatae laborum.
+                                `, address: "Lambanyi", phone: "+224 625-458-098"
+                            },
+                        ],
+                        hospitals: [
+                            { id: 1, name: "Hôpital de Ratoma", cover: "https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+                            { id: 2, name: "Hopital Sino-guinéen", cover: "https://images.pexels.com/photos/134065/pexels-photo-134065.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}
+                        ]
+                    }
+
+                },
+                onFetchInfos(e) {
+                    e.preventDefault();
+
+                    this.infos.phones = this.phoneNumbers.filter(ph => ph.city === this.city.id);
+                }
+            }));
+        })
+    </script>
+</body>

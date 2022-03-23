@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Jost:wght@200;400&family=Lobster&family=Raleway:wght@100;300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet"> 
+    <link href="./dist/main.css" rel="stylesheet">
+    <script src="./src/main.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Stop VBG</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <header class="padding lg:px-10 bg-black w-screen border-b border-white">
+        <nav class="relative flex justify-between items-center">
+          <a class="text-2xl text-white font-bold" href="./index.html">
+            <img class="h-7" src="https://shuffle.dev/zospace-assets/logos/zospace-logo.svg" alt="" width="auto">
+          </a>
+          <div class="flex gap-3 items-center">
+            <div class="w-[16px]">
+              <img id="dark-mode-toggler" src="./src/img/night-mode.svg" class="cursor-pointer" alt="" width="16px" height="16px" />
+            </div>
+            <div class="lg:hidden">
+              <span class="cursor-pointer p-1 navbar-burger bg-transparent" id="navbar-burger-btn">
+                <svg class="w-10 h-3" width="39" height="13" viewBox="0 0 39 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="39" height="2" rx="1" fill="#C4C4C4"></rect><rect x="19" y="11" width="20" height="2" rx="1" fill="#C4C4C4"></rect></svg>
+              </span>
+            </div>
+          </div>
+          <div class="hidden lg:block absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <ul class="flex items-center text-white space-x-5">
+              <li><a class="md-header-link" href="./aides/index.html">Où trouver de l'aide ?</a></li>
+              <li><a class="md-header-link" href="./blog.html">Blog</a></li>
+              <li><a class="md-header-link" href="./faq.html">FAQ</a></li>
+              <li><a class="md-header-link" href="./medias.html">Médias</a></li>
+              <li><a class="md-header-link" href="./dons.html">Dons</a></li>
+              <li><a class="md-header-link" href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+        </nav>
+        <div id="mobile-nav" class="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
+          <div id="mobile-nav-backdrop" class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-80"></div>
+          <nav class="relative flex flex-col py-8 h-full w-full bg-light dark:bg-black-light  overflow-y-auto">
+            <div>
+              <ul class="px-4">
+                <li><a class="header-link" href="./aides/index.html">Où trouver de l'aide ?</a></li>
+                <li><a class="header-link" href="./blog.html">Blog</a></li>
+                <li><a class="header-link" href="./faq.html">FAQ</a></li>
+                <li><a class="header-link" href="./medias.html">Médias</a></li>
+                <li><a class="header-link" href="./dons.html">Dons</a></li>
+                <li><a class="header-link" href="./contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </header>
+    <main class="p-0">
+
+      <!-- Statistiques -->
+      <section class="dark:bg-black w-screen p-5 md:px-32 md:py-32 text-white grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div class="stat-item bg-light-dark shadow text-black dark:text-white dark:bg-black-light rounded">
+          <div class="py-5">
+            <h2>35,800</h2>
+          </div>
+          <div class="p-4 pt-5 border-t-4 border-red-700">
+            <p class="font-semibold mb-4 text-lg">Aggressions sexuelles</p>
+            <div class="font-light text-sm">
+              Les cas d'aggressions sexuelles sont de plus en plus récurrents dans le monde
+            </div>
+          </div>
+        </div>
+        <div class="stat-item bg-light-dark shadow text-black dark:text-white dark:bg-black-light rounded">
+          <div class="py-5">
+            <h2>129,000</h2>
+          </div>
+          <div class="p-4 pt-5 border-t-4 border-yellow-700">
+            <p class="font-semibold mb-4 text-lg">Discriminations</p>
+            <div class="font-light text-sm">
+              Les cas de discriminations sont de plus en plus récurrents dans le monde
+            </div>
+          </div>
+        </div>
+        <div class="stat-item bg-light-dark shadow text-black dark:text-white dark:bg-black-light rounded">
+          <div class="py-5">
+            <h2>12,500</h2>
+          </div>
+          <div class="p-4 pt-5 border-t-4 border-green-700">
+            <p class="font-semibold mb-4 text-lg">Mariages forcés</p>
+            <div class="font-light text-sm">
+              De plus en plus de jeunes enfants sont mariés de force par leurs parents
+            </div>
+          </div>
+        </div>
+        <div class="stat-item bg-light-dark shadow text-black dark:text-white dark:bg-black-light rounded">
+          <div class="py-5">
+            <h2>400,000</h2>
+          </div>
+          <div class="p-4 pt-5 border-t-4 border-purple-700">
+            <p class="font-semibold mb-4 text-lg">Féminicides</p>
+            <div class="font-light text-sm">
+              Le nombre de femmes qui subissent des violences dans leur foyer a triplé
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Appel à la formation -->
+      <section class="relative w-screen h-[300px] md:h-[500px]">
+        <div class="video-container h-full overflow-hidden grayscale absolute top-0 left-0 w-full z-0">
+          <video playsinline autoplay muted loop class="h-full w-full object-cover object-center">
+            <source src="./src/vid/stop.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="absolute left-0 top-0 w-full h-full z-10 flex items-center justify-center">
+          <div class="w-76 h-96 text-white flex flex-col items-center justify-center">
+            <h3 class="font-bold text-2xl md:text-4xl mb-12">Suivez notre formation</h3>
+            <p></p>
+            <div>
+              <a href="./formations/index.html" class="p-3 bg-light-dark rounded text-black">Commencer la formation</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Membres de l'équipe -->
+        <section class="container">
+            <h2>Notre équipe</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 gap-4 justify-center">
+                <div class="card">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=841&q=80" alt="Membre" />
+                    <div class="card-data">
+                        <p class="card-title">LEA Herrera</p>
+                        <p class="card-description">Co-fondatrice</p>
+
+                        <ul class="mt-3 card-links">
+                            <li><img src="./src/img/twitter.svg" alt="" srcset="" width="30px" height="30px"></li>
+                            <li><img src="./src/img/facebook.svg" alt="" srcset="" width="30px" height="30px"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=841&q=80" alt="Membre" />
+                    <div class="card-data">
+                        <p class="card-title">LEA Herrera</p>
+                        <p class="card-description">Co-fondatrice</p>
+
+                        <ul class="mt-3 card-links">
+                            <li><img src="./src/img/twitter.svg" alt="" srcset="" width="30px" height="30px"></li>
+                            <li><img src="./src/img/facebook.svg" alt="" srcset="" width="30px" height="30px"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-cover" src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=841&q=80" alt="Membre" />
+                    <div class="card-data">
+                        <p class="card-title">LEA Herrera</p>
+                        <p class="card-description">Co-fondatrice</p>
+
+                        <ul class="mt-3 card-links">
+                            <li><img src="./src/img/twitter.svg" alt="" srcset="" width="30px" height="30px"></li>
+                            <li><img src="./src/img/facebook.svg" alt="" srcset="" width="30px" height="30px"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                  <img class="card-cover" src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=841&q=80" alt="Membre" />
+                  <div class="card-data">
+                      <p class="card-title">LEA Herrera</p>
+                      <p class="card-description">Co-fondatrice</p>
+
+                      <ul class="mt-3 card-links">
+                          <li><img src="./src/img/twitter.svg" alt="" srcset="" width="30px" height="30px"></li>
+                          <li><img src="./src/img/facebook.svg" alt="" srcset="" width="30px" height="30px"></li>
+                      </ul>
+                  </div>
+              </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

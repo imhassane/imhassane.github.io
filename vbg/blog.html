@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Jost:wght@200;400&family=Lobster&family=Raleway:wght@100;300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet"> 
+    <link href="./dist/main.css" rel="stylesheet">
+    <script src="./src/main.js" defer></script>
+    <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+    <title>Blog</title>
+</head>
+<body>
+    <header class="padding lg:px-10 bg-black w-screen border-b border-white">
+        <nav class="relative flex justify-between items-center">
+          <a class="text-2xl text-white font-bold" href="./index.html">
+            <img class="h-7" src="https://shuffle.dev/zospace-assets/logos/zospace-logo.svg" alt="" width="auto">
+          </a>
+          <div class="flex gap-3 items-center">
+            <div class="w-[16px]">
+              <img id="dark-mode-toggler" src="./src/img/night-mode.svg" class="cursor-pointer" alt="" width="16px" height="16px" />
+            </div>
+            <div class="lg:hidden">
+              <span class="cursor-pointer p-1 navbar-burger bg-transparent" id="navbar-burger-btn">
+                <svg class="w-10 h-3" width="39" height="13" viewBox="0 0 39 13" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="39" height="2" rx="1" fill="#C4C4C4"></rect><rect x="19" y="11" width="20" height="2" rx="1" fill="#C4C4C4"></rect></svg>
+              </span>
+            </div>
+          </div>
+          <div class="hidden lg:block absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <ul class="flex items-center text-white space-x-5">
+              <li><a class="md-header-link" href="./aides/index.html">Où trouver de l'aide ?</a></li>
+              <li><a class="md-header-link" href="./blog.html">Blog</a></li>
+              <li><a class="md-header-link" href="./faq.html">FAQ</a></li>
+              <li><a class="md-header-link" href="./medias.html">Médias</a></li>
+              <li><a class="md-header-link" href="./dons.html">Dons</a></li>
+              <li><a class="md-header-link" href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+        </nav>
+        <div id="mobile-nav" class="hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50">
+          <div id="mobile-nav-backdrop" class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-80"></div>
+          <nav class="relative flex flex-col py-8 h-full w-full bg-light dark:bg-black-light  overflow-y-auto">
+            <div>
+              <ul class="px-4">
+                <li><a class="header-link" href="./aides/index.html">Où trouver de l'aide ?</a></li>
+                <li><a class="header-link" href="./blog.html">Blog</a></li>
+                <li><a class="header-link" href="./faq.html">FAQ</a></li>
+                <li><a class="header-link" href="./medias.html">Médias</a></li>
+                <li><a class="header-link" href="./dons.html">Dons</a></li>
+                <li><a class="header-link" href="./contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </header>
+    <main class="container section">
+        <h1>Blog</h1>
+
+        <!-- 6 derniers articles -->
+        <div class="flex flex-col xl:flex-row gap-5 pb-5 mb-5 md:pb-10 md:mb-10  border-b border-gray-400">
+            <!-- Dernier article -->
+            <div class="blog-card flex-1">
+                <div class="blog-card-cover-block">
+                    <img class="blog-card-cover" src="https://images.unsplash.com/photo-1547937084-4d587301a545?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+                    <div class="blog-card-date">
+                        <span class="font-bold text-center text-xl">29</span>
+                        <span class="text-sm lowercase">Mars</span>
+                    </div>
+                </div>
+                <div class="blog-card-data">
+                    <h3 class="blog-card-title">Manifestation féministe à Marseille</h3>
+                    <div class="blog-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, excepturi ducimus animi cupiditate in perferendis ratione odio repellendus aut nesciunt, inventore molestias labore minus facilis quo saepe at assumenda impedit?
+                    </div>
+                </div>
+            </div>
+            <!-- 5 derniers autres -->
+            <div class="xl:w-1/3 xl:px-10">
+                <div class="flex  xl:flex-col gap-5">
+                    <div class="flex flex-col xl:flex-row gap-3 items-start">
+                        <img class="w-full xl:w-32 h-28 object-center object-cover" src="https://images.unsplash.com/photo-1583971663176-dd7180de1b76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80" alt="Image de couverture" width="35px" height="35px" class="object-cover object-center" />
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold mb-1">Le mois de la femme</p>
+                            <div class="font-light text-xs">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                Voluptate saepe expedita a
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col xl:flex-row gap-3 items-start">
+                        <img class="w-full xl:w-32 h-28 object-center object-cover" src="https://images.unsplash.com/photo-1583971663176-dd7180de1b76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80" alt="Image de couverture" width="35px" height="35px" class="object-cover object-center" />
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold mb-1">Le mois de la femme</p>
+                            <div class="font-light text-xs">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                Voluptate saepe expedita a
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col xl:flex-row gap-3 items-start">
+                        <img class="w-full xl:w-32 h-28 object-center object-cover" src="https://images.unsplash.com/photo-1583971663176-dd7180de1b76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80" alt="Image de couverture" width="35px" height="35px" class="object-cover object-center" />
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold mb-1">Le mois de la femme</p>
+                            <div class="font-light text-xs">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                Voluptate saepe expedita a
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestions de vidéos -->
+        <div class="mb-5 pb-5 md:mb-10 md:pb-5 border-b border-gray-400">
+            <h2>Nous vous proposons aussi des vidéos éducatives</h2>
+
+            <div id="blog-suggestions" class="mt-3 flex flex-nowrap relative overflow-x-scroll hide-scroll-bar gap-7">
+                <div class="media w-3/4 md:w-2/3 flex-shrink-0">
+                    <img class="w-full h-72 object-cover object-center rounded-t-lg" src="https://images.unsplash.com/photo-1485113771930-4e8b61c60d64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" />
+
+                    <div class="flex">
+                        <div class="mt-3 bg-gray-400 dark:bg-black-light p-5 rounded flex-1 md:w-3/4">
+                            <p class="font-bold mb-1">Mission à Montpellier</p>
+                            <div class="text-sm">
+                                Nous sommes allés dans un centre de formation en foot féminin.
+                            </div>
+                            <div class="mt-4">
+                                <a href="/" target="_blank" class="text-xs">Voir la vidéo</a>
+                            </div>
+                        </div>
+                        <div class="hidden flex-1 md:flex gap-3 p-5">
+                            <div class="l-blog-videos cursor-pointer bg-black-light w-12 h-12 rounded-full flex items-center justify-center text-white">
+                                <img src="./src/img/left-arrow.png" alt="" srcset="">
+                            </div>
+                            <div class="r-blog-videos cursor-pointer bg-black-light w-12 h-12 rounded-full flex items-center justify-center text-white">
+                                <img src="./src/img/right-arrow.png" alt="" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media w-3/4 md:w-2/3 flex-shrink-0">
+                    <img class="w-full h-72 object-cover object-center rounded-t-lg" src="https://images.unsplash.com/photo-1485113771930-4e8b61c60d64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" />
+
+                    <div class="flex">
+                        <div class="mt-3 bg-gray-400 dark:bg-black-light p-5 rounded flex-1 md:w-3/4">
+                            <p class="font-bold mb-1">Mission à Montpellier</p>
+                            <div class="text-sm">
+                                Nous sommes allés dans un centre de formation en foot féminin.
+                            </div>
+                            <div class="mt-4">
+                                <a href="/" target="_blank" class="text-xs">Voir la vidéo</a>
+                            </div>
+                        </div>
+                        <div class="hidden flex-1 md:flex gap-3 p-5">
+                            <div class="l-blog-videos cursor-pointer bg-black-light w-12 h-12 rounded-full flex items-center justify-center text-white">
+                                <img src="./src/img/left-arrow.png" alt="" srcset="">
+                            </div>
+                            <div class="r-blog-videos cursor-pointer bg-black-light w-12 h-12 rounded-full flex items-center justify-center text-white">
+                                <img src="./src/img/right-arrow.png" alt="" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="media w-3/4 md:w-2/3 flex-shrink-0">
+                    <img class="w-full h-72 object-cover object-center rounded-t-lg" src="https://images.unsplash.com/photo-1485113771930-4e8b61c60d64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" />
+
+                    <div class="flex">
+                        <div class="mt-3 bg-gray-400 dark:bg-black-light p-5 rounded flex-1 md:w-3/4">
+                            <p class="font-bold mb-1">Mission à Montpellier</p>
+                            <div class="text-sm">
+                                Nous sommes allés dans un centre de formation en foot féminin.
+                            </div>
+                            <div class="mt-4">
+                                <a href="/" target="_blank" class="text-xs">Voir la vidéo</a>
+                            </div>
+                        </div>
+                        <div class="hidden flex-1 md:flex gap-3 p-5">
+                            <div class="l-blog-videos cursor-pointer bg-black-light w-12 h-12 rounded-full flex items-center justify-center text-white">
+                                <img src="./src/img/left-arrow.png" alt="" srcset="">
+                            </div>
+                            <div class="r-blog-videos cursor-pointer bg-black-light w-12 h-12 rounded-full flex items-center justify-center text-white">
+                                <img src="./src/img/right-arrow.png" alt="" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Articles plus anciens -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="blog-card flex-1">
+                <div class="blog-card-cover-block">
+                    <img class="blog-card-cover" src="https://images.unsplash.com/photo-1547937084-4d587301a545?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+                    <div class="blog-card-date">
+                        <span class="font-bold text-center text-xl">29</span>
+                        <span class="text-sm lowercase">Mars</span>
+                    </div>
+                </div>
+                <div class="blog-card-data">
+                    <h3 class="blog-card-title">Manifestation féministe à Marseille</h3>
+                    <div class="blog-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, excepturi ducimus animi cupiditate in perferendis ratione odio repellendus aut nesciunt, inventore molestias labore minus facilis quo saepe at assumenda impedit?
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card flex-1">
+                <div class="blog-card-cover-block">
+                    <img class="blog-card-cover" src="https://images.unsplash.com/photo-1547937084-4d587301a545?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+                    <div class="blog-card-date">
+                        <span class="font-bold text-center text-xl">29</span>
+                        <span class="text-sm lowercase">Mars</span>
+                    </div>
+                </div>
+                <div class="blog-card-data">
+                    <h3 class="blog-card-title">Manifestation féministe à Marseille</h3>
+                    <div class="blog-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, excepturi ducimus animi cupiditate in perferendis ratione odio repellendus aut nesciunt, inventore molestias labore minus facilis quo saepe at assumenda impedit?
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card flex-1">
+                <div class="blog-card-cover-block">
+                    <img class="blog-card-cover" src="https://images.unsplash.com/photo-1547937084-4d587301a545?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+                    <div class="blog-card-date">
+                        <span class="font-bold text-center text-xl">29</span>
+                        <span class="text-sm lowercase">Mars</span>
+                    </div>
+                </div>
+                <div class="blog-card-data">
+                    <h3 class="blog-card-title">Manifestation féministe à Marseille</h3>
+                    <div class="blog-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, excepturi ducimus animi cupiditate in perferendis ratione odio repellendus aut nesciunt, inventore molestias labore minus facilis quo saepe at assumenda impedit?
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card flex-1">
+                <div class="blog-card-cover-block">
+                    <img class="blog-card-cover" src="https://images.unsplash.com/photo-1547937084-4d587301a545?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+                    <div class="blog-card-date">
+                        <span class="font-bold text-center text-xl">29</span>
+                        <span class="text-sm lowercase">Mars</span>
+                    </div>
+                </div>
+                <div class="blog-card-data">
+                    <h3 class="blog-card-title">Manifestation féministe à Marseille</h3>
+                    <div class="blog-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, excepturi ducimus animi cupiditate in perferendis ratione odio repellendus aut nesciunt, inventore molestias labore minus facilis quo saepe at assumenda impedit?
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>
