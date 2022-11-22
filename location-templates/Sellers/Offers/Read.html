@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style type="text/tailwindcss">
+        @layer base {
+            fieldset {
+                @apply mb-3;
+            }
+
+            legend {
+                @apply text-sky-600 mb-2;
+            }
+
+            select {
+                @apply bg-white border-none;
+            }
+
+            input[type=checkbox] {
+                @apply mr-1;
+            }
+
+            input {
+                @apply focus:outline-none;
+            }
+
+            button {
+                @apply px-3 py-2 rounded-3xl border w-full text-sm;
+            }
+        }
+
+        @layer components {
+            .form-group {
+                @apply flex items-center gap-2 border rounded-full p-2;
+            }
+
+            .primary {
+                @apply bg-sky-700 text-white border-sky-700;
+            }
+
+            .danger {
+                @apply bg-red-500 text-white border-red-500;
+            }
+
+            .offer {
+                @apply bg-white rounded-xl;
+            }
+
+            .price {
+                @apply text-sky-700 font-bold text-lg;
+            }
+        }
+    </style>
+    <title>Nouvelle offre</title>
+</head>
+<body class="bg-stone-50 flex flex-col">
+    <div class="min-h-screen flex flex-col">
+        <header class="relative bg-white" x-data="{ isAuthModalVisible: false }">
+            <!-- Mobile Navigation -->
+            <nav class="md:hidden flex justify-between items-center p-3 border-b-2">
+                <h1>Location</h1>
+                
+                
+                <ul class="w-auto">
+                    <li>
+                        <img
+                            src="/location-templates/images/Menu.svg"
+                            width="40" height="40"
+                            class="cursor-pointer"
+                            @click="() => document.querySelector('#mobile-navigation-modal').classList.remove('hidden')"
+                        />
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Navigation Modal -->
+            <div id="mobile-navigation-modal" class="hidden absolute top-0 left-0 w-screen h-screen z-10 bg-white">
+                <div class="relative w-full h-full p-3">
+                    <div class="flex justify-end mb-3">
+                        <img
+                            src="/location-templates/images/Close.svg"
+                            width="40" height="40" class="cursor-pointer"
+                            @click="() => document.querySelector('#mobile-navigation-modal').classList.add('hidden')"
+                        />
+                    </div>
+
+                    <ul class="flex-1 flex flex-col gap-3">
+                        <li><a href="/">Recherche</a></li>
+                        <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                        <li><a href="/location-templates/Help">Foire à question</a></li>
+                        <li><a href="/location-templates/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/location-templates/Auth/Register.html">Créer un compte</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tablet Navigation -->
+            <nav class="hidden md:flex lg:hidden border-b-2 px-12 py-3 items-center justify-between">
+                <h1>Location</h1>
+                <ul class="flex-1 flex justify-center gap-5">
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
+                </ul>
+                <ul class="relative flex gap-2">
+                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
+                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
+
+                    <!-- Login navigation dropdown -->
+                    <ul x-show="isAuthModalVisible" class="absolute right-0 top-10 w-[200px] bg-white rounded-md shadow-lg px-3 py-5 text-sm flex flex-col gap-3">
+                        <li><a href="/location-templates/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/location-templates/Auth/Register.html">Créer un compte</a></li>
+                    </ul>
+                </ul>
+            </nav>
+
+
+            <!-- Computer Navigation -->
+            <nav class="hidden lg:flex border-b-2 px-12 py-3 items-center justify-between">
+                <h1>Location</h1>
+                <ul class="flex-1 flex justify-center gap-5">
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
+                </ul>
+                <ul class="relative flex gap-2">
+                    <li><a href="/location-templates/Auth/Login.html" class="text-blue-500">Connexion</a></li>
+                    <li>ou</li>
+                    <li><a href="/location-templates/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section
+            class="p-3 flex flex-col lg:flex-row gap-3"
+            x-data="{
+                toggleArrows() {
+                    document.querySelector('#up-arrow').classList.toggle('hidden');
+                    document.querySelector('#down-arrow').classList.toggle('hidden');
+                    document.querySelector('#mobile-menu').classList.toggle('hidden');
+                }
+            }"
+        >
+            <aside class="w-full lg:w-1/4 lg:px-8 lg:py-4 bg-white rounded-xl">
+                <!-- Mobile navigation -->
+                <div class="lg:hidden p-3">
+                    <div class="flex justify-between items-center" @click="toggleArrows()">
+                        <p>Menu</p>
+                        <img
+                            id="down-arrow"
+                            src="/location-templates/images/Down.svg"
+                            width="30" height="30" alt="Menu Icon"
+                        />
+                        <img
+                            id="up-arrow"
+                            class="hidden"
+                            src="/location-templates/images/Up.svg"
+                            width="30" height="30" alt="Menu Icon"
+                        />
+                    </div>
+
+                    <ul id="mobile-menu" class="hidden pt-3 mt-3 border-t flex flex-col gap-3">
+                        <li><a href="/location-templates/Sellers/Offers/index.html">Mes offres</a></li>
+                        <li><a href="/location-templates/Sellers/Account.html">Mon compte</a></li>
+                    </ul>
+                </div>
+
+                <!-- Computer navigation -->
+                <nav class="hidden lg:block">
+                    <ul class="flex flex-col gap-3">
+                        <li class="pb-3 border-b"><a href="/location-templates/Sellers/Offers/index.html">Mes offres</a></li>
+                        <li><a href="/location-templates/Sellers/Account.html">Mon compte</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="flex-1 bg-white rounded-xl p-3 lg:py-5 lg:px-8">
+                <div>
+                   <h3 class="text-lg font-semibold mb-3">Nouvelle offre</h3>
+                   <form action="" method="post" class="flex flex-col gap-3 lg:gap-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="flex flex-col gap-2">
+                                <label for="Address" class="text-sky-700">Quartier / Lieu</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Gps.svg" width="25" height="25" />
+                                    <input type="text" name="Address" id="Address" placeholder="Ex: Hamdallaye" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="Address" class="text-sky-700">Préfecture</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Gps.svg" width="25" height="25" />
+                                    <input type="text" name="Prefecture" id="Prefecture" placeholder="Ex: Kindia" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="flex flex-col gap-2">
+                                <label for="Type" class="text-sky-700">Type</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/SingleFloor.svg" width="25" height="25" />
+                                    <select name="Type" id="Type" class="flex-1">
+                                        <option value="LOGEMENT">Logement</option>
+                                        <option value="RESIDENCE">Résidence</option>
+                                        <option value="MAGASIN">Magasin</option>
+                                        <option value="BUREAU">Bureau</option>
+                                        <option value="RESTAURANT">Restaurant</option>
+                                        <option value="ENTREPOT">Entrepôt</option>
+                                        <option value="PARCELLE">Parcelle</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="Category" class="text-sky-700">Category</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/MultiFloor.svg" width="25" height="25" />
+                                    <select name="Category" id="Category" class="flex-1">
+                                        <option value="SINGLE_FLOOR">Rez-de-chaussée</option>
+                                        <option value="MULTI_FLOOR">&Eacute;tages</option>
+                                        <option value="DUPLEX">Duplex</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="Format" class="text-sky-700">Format</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/People.svg" width="25" height="25" />
+                                    <select name="Format" id="Format" class="flex-1">
+                                        <option value="HABITATION">Habitation</option>
+                                        <option value="COLOCATION">Colocation</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            <div class="flex flex-col gap-2">
+                                <label for="Surface" class="text-sky-700">Surface</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Dimension.svg" width="25" height="25" />
+                                    <input type="number" name="Surface" id="Surface" value="1" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbBedrooms" class="text-sky-700">Nombre de chambres</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Bedroom.svg" width="25" height="25" />
+                                    <input type="number" name="NbBedrooms" id="NbBedrooms" value="1" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbToilets" class="text-sky-700">Nombre de toilettes</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Wc.svg" width="25" height="25" />
+                                    <input type="number" name="NbToilets" id="NbToilets" value="1" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbKitchen" class="text-sky-700">Nombre de cuisines</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Kitchen.svg" width="25" height="25" />
+                                    <input type="number" name="NbKitchen" id="NbKitchen" value="1" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbDiningRoom" class="text-sky-700">Nombre de salles à manger</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Bar.svg" width="25" height="25" />
+                                    <input type="number" name="NbDiningRoom" id="NbDiningRoom" value="0" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbGarages" class="text-sky-700">Nombre de garages</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Garage.svg" width="25" height="25" />
+                                    <input type="number" name="NbGarages" id="NbGarages" value="0" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbBalconies" class="text-sky-700">Nombre de balcons</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Balcony.svg" width="25" height="25" />
+                                    <input type="number" name="NbBalconies" id="NbBalconies" value="0" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="NbPools" class="text-sky-700">Nombre de piscines</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Pool.svg" width="25" height="25" />
+                                    <input type="number" name="NbPools" id="NbPools" value="0" min="0" max="10000" class="flex-1" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <label for="HasAirConditioning" class="text-sky-700">
+                                    <input type="checkbox" name="HasAirConditioning" id="HasAirConditioning" />
+                                    Propriété climatisée
+                            </label>
+                            <label for="HasFurniture" class="text-sky-700">
+                                    <input type="checkbox" name="HasFurniture" id="HasFurniture" />
+                                    Propriété meublée
+                            </label>
+                            <label for="AreChargesIncluded" class="text-sky-700">
+                                    <input type="checkbox" name="AreChargesIncluded" id="AreChargesIncluded" />
+                                    Charges prises en charge
+                            </label>
+                        </div>
+
+                        <div>
+                            <label for="Images" class="text-sky-700 mb-1">Images de la propriété</label>
+                            <p class="mb-2"><small>Veuillez charger au maximum 10 images</small></p>
+                            <input type="file" name="Images" id="Images" accept="images/**" />
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <button class="primary">Modifier l'offre</button>
+                            <button class="primary">Publier l'offre</button>
+                            <button class="danger">Supprimer l'offre</button>
+                        </div>
+                   </form>
+                </div>
+            </main>
+        </section>
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>

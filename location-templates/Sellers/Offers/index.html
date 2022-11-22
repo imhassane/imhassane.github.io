@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style type="text/tailwindcss">
+        @layer base {
+            fieldset {
+                @apply mb-3;
+            }
+
+            legend {
+                @apply text-sky-600 mb-2;
+            }
+
+            select {
+                @apply bg-white border-none;
+            }
+
+            input[type=checkbox] {
+                @apply mr-1;
+            }
+
+            input {
+                @apply focus:outline-none;
+            }
+
+            button {
+                @apply px-3 py-2 rounded-3xl border w-full text-sm;
+            }
+        }
+
+        @layer components {
+            .form-group {
+                @apply flex items-center gap-2 border rounded-full p-2;
+            }
+
+            .button {
+                @apply px-3 py-2 rounded-3xl border w-full text-sm;
+            }
+
+            .primary {
+                @apply bg-sky-700 text-white border-sky-700;
+            }
+
+            .danger {
+                @apply bg-red-500 text-white border-red-500;
+            }
+
+            .offer {
+                @apply bg-white rounded-xl;
+            }
+
+            .price {
+                @apply text-sky-700 font-bold text-lg;
+            }
+        }
+    </style>
+    <title>Connexion</title>
+</head>
+<body class="bg-stone-50 flex flex-col">
+    <div class="min-h-screen flex flex-col">
+        <header class="relative bg-white" x-data="{ isAuthModalVisible: false }">
+            <!-- Mobile Navigation -->
+            <nav class="md:hidden flex justify-between items-center p-3 border-b-2">
+                <h1>Location</h1>
+                
+                
+                <ul class="w-auto">
+                    <li>
+                        <img
+                            src="/location-templates/images/Menu.svg"
+                            width="40" height="40"
+                            class="cursor-pointer"
+                            @click="() => document.querySelector('#mobile-navigation-modal').classList.remove('hidden')"
+                        />
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Navigation Modal -->
+            <div id="mobile-navigation-modal" class="hidden absolute top-0 left-0 w-screen h-screen z-10 bg-white">
+                <div class="relative w-full h-full p-3">
+                    <div class="flex justify-end mb-3">
+                        <img
+                            src="/location-templates/images/Close.svg"
+                            width="40" height="40" class="cursor-pointer"
+                            @click="() => document.querySelector('#mobile-navigation-modal').classList.add('hidden')"
+                        />
+                    </div>
+
+                    <ul class="flex-1 flex flex-col gap-3">
+                        <li><a href="/">Recherche</a></li>
+                        <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                        <li><a href="/location-templates/Help">Foire à question</a></li>
+                        <li><a href="/location-templates/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/location-templates/Auth/Register.html">Créer un compte</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tablet Navigation -->
+            <nav class="hidden md:flex lg:hidden border-b-2 px-12 py-3 items-center justify-between">
+                <h1>Location</h1>
+                <ul class="flex-1 flex justify-center gap-5">
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
+                </ul>
+                <ul class="relative flex gap-2">
+                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
+                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
+
+                    <!-- Login navigation dropdown -->
+                    <ul x-show="isAuthModalVisible" class="absolute right-0 top-10 w-[200px] bg-white rounded-md shadow-lg px-3 py-5 text-sm flex flex-col gap-3">
+                        <li><a href="/location-templates/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/location-templates/Auth/Register.html">Créer un compte</a></li>
+                    </ul>
+                </ul>
+            </nav>
+
+
+            <!-- Computer Navigation -->
+            <nav class="hidden lg:flex border-b-2 px-12 py-3 items-center justify-between">
+                <h1>Location</h1>
+                <ul class="flex-1 flex justify-center gap-5">
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
+                </ul>
+                <ul class="relative flex gap-2">
+                    <li><a href="/location-templates/Auth/Login.html" class="text-blue-500">Connexion</a></li>
+                    <li>ou</li>
+                    <li><a href="/location-templates/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section
+            class="p-3 flex flex-col lg:flex-row gap-3"
+            x-data="{
+                toggleArrows() {
+                    document.querySelector('#up-arrow').classList.toggle('hidden');
+                    document.querySelector('#down-arrow').classList.toggle('hidden');
+                    document.querySelector('#mobile-menu').classList.toggle('hidden');
+                }
+            }"
+        >
+            <aside class="w-full lg:w-1/4 lg:px-8 lg:py-4 bg-white rounded-xl">
+                <!-- Mobile navigation -->
+                <div class="lg:hidden p-3">
+                    <div class="flex justify-between items-center" @click="toggleArrows()">
+                        <p>Menu</p>
+                        <img
+                            id="down-arrow"
+                            src="/location-templates/images/Down.svg"
+                            width="30" height="30" alt="Menu Icon"
+                        />
+                        <img
+                            id="up-arrow"
+                            class="hidden"
+                            src="/location-templates/images/Up.svg"
+                            width="30" height="30" alt="Menu Icon"
+                        />
+                    </div>
+
+                    <ul id="mobile-menu" class="hidden pt-3 mt-3 border-t flex flex-col gap-3">
+                        <li><a href="/location-templates/Sellers/Offers/index.html">Mes offres</a></li>
+                        <li><a href="/location-templates/Sellers/Account.html">Mon compte</a></li>
+                    </ul>
+                </div>
+
+                <!-- Computer navigation -->
+                <nav class="hidden lg:block">
+                    <ul class="flex flex-col gap-3">
+                        <li class="pb-3 border-b"><a href="/location-templates/Sellers/Offers/index.html">Mes offres</a></li>
+                        <li><a href="/location-templates/Sellers/Account.html">Mon compte</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="flex-1 bg-white rounded-xl p-3 lg:p-5">
+                <div>
+                    <a href="/location-templates/Sellers/Offers/New.html" class="button primary">Nouvelle offre</a>
+                </div>
+                <div class="my-4">
+                    <h3 class="text-lg font-semibold mb-4 pb-4 border-b">Offres publiées</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="/location-templates/Sellers/Offers/Read.html">
+                            <div class="offer border">
+                                <img src="/location-templates/images/offers/Immeuble.jpg" class="h-48 w-full rounded-xl object-center object-cover" />
+                                <div class="bg-white py-3 px-3 rounded-b-xl">
+                                    <div class="flex justify-between">
+                                        <p class="font-bold text-lg">Maison à louer</p>
+                                        <p class="price">1200000 fg <i class="font-base font-light text-sm text-gray-400">/ mois</i></p>
+                                    </div>
+                                    <p class="text-gray-400 text-sm my-2">Hamdallaye, Conakry</p>
+                                    <div class="border-t border-gray-300">
+                                        <div class="flex gap-3 text-sm py-3">
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Bedroom.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">3 chambres</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Wc.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">2 toilettes</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Dimension.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">25 m²</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="my-4">
+                    <h3 class="text-lg font-semibold mb-4 pb-4 border-b">Offres en attente de publication</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="/location-templates/Sellers/Offers/Read.html">
+                            <div class="offer border">
+                                <img src="/location-templates/images/offers/Maison-3.jpg" class="h-48 w-full rounded-xl object-center object-cover" />
+                                <div class="bg-white py-3 px-3 rounded-b-xl">
+                                    <div class="flex justify-between">
+                                        <p class="font-bold text-lg">Maison à louer</p>
+                                        <p class="price">1200000 fg <i class="font-base font-light text-sm text-gray-400">/ mois</i></p>
+                                    </div>
+                                    <p class="text-gray-400 text-sm my-2">Hamdallaye, Conakry</p>
+                                    <div class="border-t border-gray-300">
+                                        <div class="flex gap-3 text-sm py-3">
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Bedroom.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">3 chambres</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Wc.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">2 toilettes</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Dimension.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">25 m²</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 pb-4 border-b">Offres archivées</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="/location-templates/Sellers/Offers/Read.html">
+                            <div class="offer border">
+                                <img src="/location-templates/images/offers/Maison-1.jpg" class="h-48 w-full rounded-xl object-center object-cover" />
+                                <div class="bg-white py-3 px-3 rounded-b-xl">
+                                    <div class="flex justify-between">
+                                        <p class="font-bold text-lg">Maison à louer</p>
+                                        <p class="price">1200000 fg <i class="font-base font-light text-sm text-gray-400">/ mois</i></p>
+                                    </div>
+                                    <p class="text-gray-400 text-sm my-2">Hamdallaye, Conakry</p>
+                                    <div class="border-t border-gray-300">
+                                        <div class="flex gap-3 text-sm py-3">
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Bedroom.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">3 chambres</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Wc.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">2 toilettes</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Dimension.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">25 m²</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/location-templates/Sellers/Offers/Read.html">
+                            <div class="offer border">
+                                <img src="/location-templates/images/offers/Maison-2.jpg" class="h-48 w-full rounded-xl object-center object-cover" />
+                                <div class="bg-white py-3 px-3 rounded-b-xl">
+                                    <div class="flex justify-between">
+                                        <p class="font-bold text-lg">Maison à louer</p>
+                                        <p class="price">1200000 fg <i class="font-base font-light text-sm text-gray-400">/ mois</i></p>
+                                    </div>
+                                    <p class="text-gray-400 text-sm my-2">Hamdallaye, Conakry</p>
+                                    <div class="border-t border-gray-300">
+                                        <div class="flex gap-3 text-sm py-3">
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Bedroom.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">3 chambres</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Wc.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">2 toilettes</span> 
+                                            </div>
+                                            <div class="flex items-center gap-1">
+                                            <img src="/location-templates/images/Dimension.svg" width="25" height="25" alt="" />
+                                            <span class="flex-1 text-gray-700">25 m²</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>
