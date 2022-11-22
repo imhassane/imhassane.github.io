@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Nunito:ital,wght@0,200;0,400;0,700;1,200;1,400&display=swap');
+
+* {
+    font-family: 'Lato', 'Nunito', 'Courier New', Courier, monospace;
+}
+
+h1 {
+    font-weight: bold !important;
+    font-size: 2rem !important;
+}
+
+h2 {
+    font-weight: bold !important;
+    font-size: 1.7rem !important;
+}

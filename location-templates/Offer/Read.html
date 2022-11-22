@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <style type="text/tailwindcss">
+        @layer base {
+            fieldset {
+                @apply mb-3;
+            }
+
+            legend {
+                @apply text-sky-600 mb-2;
+            }
+
+            select {
+                @apply bg-white border-none;
+            }
+
+            input[type=checkbox] {
+                @apply mr-1;
+            }
+
+            input {
+                @apply focus:outline-none;
+            }
+
+            button {
+                @apply px-5 py-3 rounded-full border w-full;
+            }
+        }
+
+        @layer components {
+            .form-group {
+                @apply flex items-center gap-2 border rounded-full p-2;
+            }
+
+            .primary {
+                @apply bg-sky-700 text-white border-sky-700;
+            }
+
+            .offer {
+                @apply bg-white rounded-xl;
+            }
+
+            .price {
+                @apply text-sky-700 font-bold text-lg;
+            }
+
+            .property-info {
+                @apply flex items-start text-xs lg:text-sm gap-2;
+            }
+
+            .property-info > div {
+                @apply flex flex-col;
+            }
+        }
+    </style>
+    <title>Offre n°5</title>
+</head>
+<body class="bg-stone-50">
+    <div>
+        <header class="relative bg-white" x-data="{ isModalVisible: false, isAuthModalVisible: false }">
+            <!-- Mobile Navigation -->
+            <nav class="md:hidden flex justify-between items-center p-3 border-b-2">
+                <h1>Location</h1>
+                
+                
+                <ul class="w-auto">
+                    <li>
+                        <img src="/images/Menu.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = true" />
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Navigation Modal -->
+            <div class="absolute top-0 left-0 w-screen h-screen z-10 bg-white" x-show="isModalVisible">
+                <div class="relative w-full h-full p-3">
+                    <div class="flex justify-end mb-3">
+                        <img src="/images/Close.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = false" />
+                    </div>
+
+                    <ul class="flex-1 flex flex-col gap-3">
+                        <li><a href="/">Recherche</a></li>
+                        <li><a href="/About">&Agrave; propos de nous</a></li>
+                        <li><a href="/Help">Foire à question</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tablet Navigation -->
+            <nav class="hidden md:flex lg:hidden border-b-2 px-12 py-3 items-center justify-between">
+                <h1>Location</h1>
+                <ul class="flex-1 flex justify-center gap-5">
+                    <li><a href="/">Recherche</a></li>
+                    <li><a href="/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/Help">Foire à question</a></li>
+                </ul>
+                <ul class="relative flex gap-2">
+                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
+                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
+
+                    <!-- Login navigation dropdown -->
+                    <ul x-show="isAuthModalVisible" class="absolute right-0 top-10 w-[200px] bg-white rounded-md shadow-lg px-3 py-5 text-sm flex flex-col gap-3">
+                        <li><a href="/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/Auth/Register.html">Créer un compte</a></li>
+                    </ul>
+                </ul>
+            </nav>
+
+
+            <!-- Computer Navigation -->
+            <nav class="hidden lg:flex border-b-2 px-12 py-3 items-center justify-between">
+                <h1>Location</h1>
+                <ul class="flex-1 flex justify-center gap-5">
+                    <li><a href="/">Recherche</a></li>
+                    <li><a href="/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/Help">Foire à question</a></li>
+                </ul>
+                <ul class="relative flex gap-2">
+                    <li><a href="/Auth/Login.html" class="text-blue-500">Connexion</a></li>
+                    <span>ou</span>
+                    <li><a href="/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="flex flex-col lg:flex-row p-3 lg:gap-5">
+            <main class="flex-1">
+                <!-- Bannière principale -->
+                <div x-data="{ currentImage: '/images/offers/Bureaux-1.jpg' }" class="w-full">
+                    <img x-bind:src="currentImage" alt="Maison" style="max-height: 70vh;" class="rounded-xl object-cover object-center w-full" />
+                    <div class="mt-3 bg-white rounded-xl p-3" x-data="{ areImagesVisible: false }">
+                        <div class="flex justify-between items-center">
+                            <p class="text-lg font-bold">Voir plus d'images de la propriété</p>
+                            <img src="/images/Down.svg" alt="" @click="areImagesVisible = true"  x-show="!areImagesVisible" />
+                            <img src="/images/Up.svg" alt="" @click="areImagesVisible = false"  x-show="areImagesVisible">
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3" x-show="areImagesVisible">
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Bureaux-1.jpg" alt="Bureaux 1" class="object-cover object-center h-32 w-full" />
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Bureaux-2.jpg" alt="Bureaux 1" class="object-cover object-center h-32 w-full" />
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Maison-1.jpg" alt="Maison 1" class="object-cover object-center h-32 w-full" />
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Maison-2.jpg" alt="Maison 1" class="object-cover object-center h-32 w-full" />
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Maison-3.jpg" alt="Bureaux 1" class="object-cover object-center h-32 w-full" />
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Terrain.jpg" alt="Bureaux 1" class="object-cover object-center h-32 w-full" />
+                            <img @click="e => currentImage = e.target.src" src="/images/offers/Immeuble.jpg" alt="Bureaux 1" class="object-cover object-center h-32 w-full" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caractéristiques -->
+                <div class="w-full bg-white p-4 rounded-xl my-4">
+                    <div>
+                        <p class="font-bold text-lg">Caractéristiques</p>
+                    </div>
+                    <div class="mt-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                        <div class="property-info">
+                            <img src="/images/Bedroom.svg" alt="Nombre de chambres" width="30px" />
+                            <div>
+                                <span>Chambres</span>
+                                <span>5</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Wc.svg" alt="Nombre de toilettes" width="30px" />
+                            <div>
+                                <span>Toilettes</span>
+                                <span>5</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Dimension.svg" alt="Dimensions" width="30px" />
+                            <div>
+                                <span>Dimensions</span>
+                                <span>25 m²</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Garage.svg" alt="Garage" width="30px" />
+                            <div>
+                                <span>Garage</span>
+                                <span>Non</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Balcony.svg" alt="Balcon" width="30px" />
+                            <div>
+                                <span>Balcon</span>
+                                <span>Non</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/AirConditioner.svg" alt="Climatisation" width="30px" />
+                            <div>
+                                <span>Climatisation</span>
+                                <span>Non</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Pool.svg" alt="Piscine" width="30px" />
+                            <div>
+                                <span>Piscine</span>
+                                <span>Non</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Furniture.svg" alt="Meublé" width="30px" />
+                            <div>
+                                <span>Meublé</span>
+                                <span>Non</span>
+                            </div>
+                        </div>
+                        <div class="property-info">
+                            <img src="/images/Charges.svg" alt="Charges comprises" width="30px" />
+                            <div>
+                                <span>Charges comprises</span>
+                                <span>Oui</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="lg:w-1/4 flex flex-col gap-4">
+                <!-- Propriétaire -->
+                <div class="bg-white rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-4">Contact du propriétaire</h3>
+                    <div class="text-sm">
+                        <div class="flex gap-3">
+                            <img src="/images/Account.svg" alt="Nom du propriétaire" width="25" />
+                            <p>BAH Aicha</p>
+                        </div>
+                        <div class="flex gap-3 mt-3">
+                            <img src="/images/Tel.svg" alt="Numéro de téléphone" width="25" />
+                            <p>622 345 678</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Propriété -->
+                <div class="bg-white rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-4">Détails de l'offre</h3>
+                    <div class="text-sm flex flex-col gap-2">
+                        <div class="flex gap-3">
+                            <p class="w-24">Type</p>
+                            <p class="flex-1">Logement</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <p class="w-24">Catégorie</p>
+                            <p class="flex-1">Rez-de-chaussée</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <p class="w-24">Format</p>
+                            <p class="flex-1">Habitation</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <p class="w-24">Caution</p>
+                            <p class="flex-1">1000000 GNF</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <p class="w-24">Avance</p>
+                            <p class="flex-1">2000000 GNF</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <p class="w-24">Mensualité</p>
+                            <p class="flex-1">2500000 GNF</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>
