@@ -126,7 +126,7 @@
                 </ul>
                 <ul class="relative flex gap-2">
                     <li><a href="/location-templates/Auth/Login.html" class="text-blue-500">Connexion</a></li>
-                    <span>ou</span>
+                    <li>ou</li>
                     <li><a href="/location-templates/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
                 </ul>
             </nav>
@@ -153,35 +153,35 @@
                         <legend>Type</legend>
                         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
                             <label for="ALL">
-                                <input type="checkbox" name="ALL" />
+                                <input type="checkbox" id="ALL" name="ALL" />
                                 <span>Tout</span>
                             </label>
                             <label for="LOGEMENT">
-                                <input type="checkbox" name="LOGEMENT" />
+                                <input type="checkbox" id="LOGEMENT" name="LOGEMENT" />
                                 <span>Logement</span>
                             </label>
                             <label for="RESIDENCE">
-                                <input type="checkbox" name="RESIDENCE" />
+                                <input type="checkbox" id="RESIDENCE" name="RESIDENCE" />
                                 <span>Résidence</span>
                             </label>
                             <label for="MAGASIN">
-                                <input type="checkbox" name="MAGASIN" />
+                                <input type="checkbox" id="MAGASIN" name="MAGASIN" />
                                 <span>Magasin</span>
                             </label>
                             <label for="BUREAU">
-                                <input type="checkbox" name="BUREAU" />
+                                <input type="checkbox" id="BUREAU" name="BUREAU" />
                                 <span>Bureau</span>
                             </label>
                             <label for="RESTAURANT">
-                                <input type="checkbox" name="RESTAURANT" />
+                                <input type="checkbox" id="RESTAURANT" name="RESTAURANT" />
                                 <span>Restaurant</span>
                             </label>
                             <label for="ENTREPOT">
-                                <input type="checkbox" name="ENTREPOT" />
+                                <input type="checkbox" id="ENTREPOT" name="ENTREPOT" />
                                 <span>Entrepôt</span>
                             </label>
                             <label for="PARCELLE">
-                                <input type="checkbox" name="PARCELLE" />
+                                <input type="checkbox" id="PARCELLE" name="PARCELLE" />
                                 <span>Parcelle</span>
                             </label>
                         </div>
@@ -189,20 +189,20 @@
                     <fieldset>
                         <legend>Catégorie</legend>
                         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
-                            <label for="ALL">
-                                <input type="checkbox" name="ALL" />
+                            <label for="CATEGORY_ALL">
+                                <input type="checkbox" id="CATEGORY_ALL" name="ALL" />
                                 <span>Tout</span>
                             </label>
                             <label for="SINGLE_FLOOR">
-                                <input type="checkbox" name="SINGLE_FLOOR" />
+                                <input type="checkbox" id="SINGLE_FLOOR" name="SINGLE_FLOOR" />
                                 <span>Rez-de-chaussée</span>
                             </label>
                             <label for="MULTI_FLOOR">
-                                <input type="checkbox" name="MULTI_FLOOR" />
+                                <input type="checkbox" id="MULTI_FLOOR" name="MULTI_FLOOR" />
                                 <span>Plusieurs étages</span>
                             </label>
                             <label for="DUPLEX">
-                                <input type="checkbox" name="DUPLEX" />
+                                <input type="checkbox" id="DUPLEX" name="DUPLEX" />
                                 <span>Duplex</span>
                             </label>
                         </div>
@@ -210,16 +210,16 @@
                     <fieldset>
                         <legend>Format</legend>
                         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
-                            <label for="ALL">
-                                <input type="checkbox" name="ALL" />
+                            <label for="FORMAT_ALL">
+                                <input type="checkbox" id="FORMAT_ALL" name="ALL" />
                                 <span>Tout</span>
                             </label>
                             <label for="HABITATION">
-                                <input type="checkbox" name="HABITATION" />
+                                <input type="checkbox" id="HABITATION" name="HABITATION" />
                                 <span>Habitation</span>
                             </label>
                             <label for="COLOCATION">
-                                <input type="checkbox" name="COLOCATION" />
+                                <input type="checkbox" id="COLOCATION" name="COLOCATION" />
                                 <span>Colocation</span>
                             </label>
                         </div>
@@ -228,12 +228,12 @@
                         <legend>Prix (FG)</legend>
                         <div class="grid grid-cols-2 gap-3">
                             <div class="form-group">
-                                <label for="" class="text-xs">Min</label>
-                                <input type="number" name="MinPrice" class="w-full">
+                                <label for="MinPrice" class="text-xs">Min</label>
+                                <input type="number" id="MinPrice" name="MinPrice" class="w-full">
                             </div>
                             <div class="form-group">
-                                <label for="" class="text-xs">Max</label>
-                                <input type="number" name="MaxPrice" class="w-full">
+                                <label for="MaxPrice" class="text-xs">Max</label>
+                                <input type="number" id="MaxPrice" name="MaxPrice" class="w-full">
                             </div>
                         </div>
                     </fieldset>
@@ -241,62 +241,62 @@
                         <legend>Dimensions (M²)</legend>
                         <div class="grid grid-cols-2 gap-3">
                             <div class="form-group">
-                                <label for="" class="text-xs">Min</label>
-                                <input type="number" name="MinDimension" class="w-full">
+                                <label for="MinDimension" class="text-xs">Min</label>
+                                <input type="number" id="MinDimension" name="MinDimension" class="w-full">
                             </div>
                             <div class="form-group">
-                                <label for="" class="text-xs">Max</label>
-                                <input type="number" name="MaxDimension" class="w-full">
+                                <label for="MaxDimension" class="text-xs">Max</label>
+                                <input type="number" id="MaxDimension" name="MaxDimension" class="w-full">
                             </div>
                         </div>
                     </fieldset>
                     <fieldset x-data="{ nbBedrooms: 1 }">
                         <legend>Chambres</legend>
                         <div class="flex items-center gap-2">
-                            <input type="range" name="NbBedrooms" value="1" min="1" max="20" step="1" @change="e => nbBedrooms = e.target.value" class="flex-1">
-                            <span x-text="nbBedrooms"></span>
+                            <input type="range" id="NbBedrooms" name="NbBedrooms" value="1" min="1" max="20" step="1" @change="e => nbBedrooms = e.target.value" class="flex-1">
+                            <label for="NbBedrooms" x-text="nbBedrooms"></label>
                         </div>
                     </fieldset>
                     <fieldset x-data="{ nbToilets: 1 }">
                         <legend>Toilettes</legend>
                         <div class="flex items-center gap-2">
-                            <input type="range" name="NbToilets" value="1" min="1" max="20" step="1" @change="e => nbToilets = e.target.value" class="flex-1">
-                            <span x-text="nbToilets"></span>
+                            <input type="range" id="NbToilets" name="NbToilets" value="1" min="1" max="20" step="1" @change="e => nbToilets = e.target.value" class="flex-1">
+                            <label for="NbToilets" x-text="nbToilets"></label>
                         </div>
                     </fieldset>
                     <fieldset>
                         <legend>Caractéristiques</legend>
                         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
-                            <label for="">
-                                <input type="checkbox" name="HasKitchen" />
+                            <label for="HasKitchen">
+                                <input type="checkbox" id="HasKitchen" name="HasKitchen" />
                                 <span>Cuisine</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="HasDiningRoom" />
+                            <label for="HasDiningRoom">
+                                <input type="checkbox" id="HasDiningRoom" name="HasDiningRoom" />
                                 <span>Salle à manger</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="HasBalcony" />
+                            <label for="HasBalcony">
+                                <input type="checkbox" id="HasBalcony" name="HasBalcony" />
                                 <span>Balcon</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="HasGarage" />
+                            <label for="HasGarage">
+                                <input type="checkbox" id="HasGarage" name="HasGarage" />
                                 <span>Garage</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="HasPool" />
+                            <label for="HasPool">
+                                <input type="checkbox" id="HasPool" name="HasPool" />
                                 <span>Piscine</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="HasAirConditioning" />
+                            <label for="HasAirConditioning">
+                                <input type="checkbox" id="HasAirConditioning" name="HasAirConditioning" />
                                 <span>Climatisation</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="IsFurnished" />
+                            <label for="IsFurnished">
+                                <input type="checkbox" id="IsFurnished" name="IsFurnished" />
                                 <span>Meubles</span>
                             </label>
-                            <label for="">
-                                <input type="checkbox" name="AreChargesIncluded" />
+                            <label for="AreChargesIncluded">
+                                <input type="checkbox" id="AreChargesIncluded" name="AreChargesIncluded" />
                                 <span>Charges incluses</span>
                             </label>
                         </div>
