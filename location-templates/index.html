@@ -64,16 +64,25 @@
                 
                 <ul class="w-auto">
                     <li>
-                        <img src="/location-templates/images/Menu.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = true" />
+                        <img
+                            src="/location-templates/images/Menu.svg"
+                            width="40" height="40"
+                            class="cursor-pointer"
+                            @click="() => document.querySelector('#mobile-navigation-modal').classList.remove('hidden')"
+                        />
                     </li>
                 </ul>
             </nav>
 
             <!-- Mobile Navigation Modal -->
-            <div class="absolute top-0 left-0 w-screen h-screen z-10 bg-white" x-show="isModalVisible">
+            <div id="mobile-navigation-modal" class="hidden absolute top-0 left-0 w-screen h-screen z-10 bg-white">
                 <div class="relative w-full h-full p-3">
                     <div class="flex justify-end mb-3">
-                        <img src="/location-templates/images/Close.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = false" />
+                        <img
+                            src="/location-templates/images/Close.svg"
+                            width="40" height="40" class="cursor-pointer"
+                            @click="() => document.querySelector('#mobile-navigation-modal').classList.add('hidden')"
+                        />
                     </div>
 
                     <ul class="flex-1 flex flex-col gap-3">
