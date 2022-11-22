@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/location-templatescss/main.css">
     <style type="text/tailwindcss">
         @layer base {
             fieldset {
@@ -64,7 +64,7 @@
                 
                 <ul class="w-auto">
                     <li>
-                        <img src="/images/Menu.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = true" />
+                        <img src="/location-templates/images/Menu.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = true" />
                     </li>
                 </ul>
             </nav>
@@ -73,13 +73,13 @@
             <div class="absolute top-0 left-0 w-screen h-screen z-10 bg-white" x-show="isModalVisible">
                 <div class="relative w-full h-full p-3">
                     <div class="flex justify-end mb-3">
-                        <img src="/images/Close.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = false" />
+                        <img src="/location-templates/images/Close.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = false" />
                     </div>
 
                     <ul class="flex-1 flex flex-col gap-3">
                         <li><a href="/">Recherche</a></li>
-                        <li><a href="/About">&Agrave; propos de nous</a></li>
-                        <li><a href="/Help">Foire à question</a></li>
+                        <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                        <li><a href="/location-templates/Help">Foire à question</a></li>
                     </ul>
                 </div>
             </div>
@@ -88,18 +88,18 @@
             <nav class="hidden md:flex lg:hidden border-b-2 px-12 py-3 items-center justify-between">
                 <h1>Location</h1>
                 <ul class="flex-1 flex justify-center gap-5">
-                    <li><a href="/">Recherche</a></li>
-                    <li><a href="/About">&Agrave; propos de nous</a></li>
-                    <li><a href="/Help">Foire à question</a></li>
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
                 </ul>
                 <ul class="relative flex gap-2">
-                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
-                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
+                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
+                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
 
                     <!-- Login navigation dropdown -->
                     <ul x-show="isAuthModalVisible" class="absolute right-0 top-10 w-[200px] bg-white rounded-md shadow-lg px-3 py-5 text-sm flex flex-col gap-3">
-                        <li><a href="/Auth/Login.html">Connexion</a></li>
-                        <li><a href="/Auth/Register.html">Créer un compte</a></li>
+                        <li><a href="/location-templates/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/location-templates/Auth/Register.html">Créer un compte</a></li>
                     </ul>
                 </ul>
             </nav>
@@ -109,14 +109,14 @@
             <nav class="hidden lg:flex border-b-2 px-12 py-3 items-center justify-between">
                 <h1>Location</h1>
                 <ul class="flex-1 flex justify-center gap-5">
-                    <li><a href="/">Recherche</a></li>
-                    <li><a href="/About">&Agrave; propos de nous</a></li>
-                    <li><a href="/Help">Foire à question</a></li>
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
                 </ul>
                 <ul class="relative flex gap-2">
-                    <li><a href="/Auth/Login.html" class="text-blue-500">Connexion</a></li>
+                    <li><a href="/location-templates/Auth/Login.html" class="text-blue-500">Connexion</a></li>
                     <span>ou</span>
-                    <li><a href="/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
+                    <li><a href="/location-templates/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
                 </ul>
             </nav>
         </header>
@@ -125,14 +125,14 @@
                 <div class="bg-white border rounded-xl px-8 py-5">
                 <div class="flex justify-between">
                     <p class="text-sm">Filtrer les résultats</p>
-                    <img x-show="isFilterOpen" @click="isFilterOpen = false" class="" src="/images/Up.svg" width="30" height="30" />
-                    <img x-show="!isFilterOpen" @click="isFilterOpen = true" class="" src="/images/Down.svg" width="30" height="30" />
+                    <img x-show="isFilterOpen" @click="isFilterOpen = false" class="" src="/location-templates/images/Up.svg" width="30" height="30" />
+                    <img x-show="!isFilterOpen" @click="isFilterOpen = true" class="" src="/location-templates/images/Down.svg" width="30" height="30" />
                 </div>
                 <form x-show="isFilterOpen">
                     <fieldset>
                         <legend>Lieu</legend>
                         <div class="form-group">
-                            <img src="/images/Gps.svg" width="20" height="20" />
+                            <img src="/location-templates/images/Gps.svg" width="20" height="20" />
                             <select class="flex-1">
                                 <option value="CONAKRY">Conakry</option>
                             </select>
@@ -298,9 +298,9 @@
             </aside>
             <main class="flex-1 mt-3 lg:mt-0">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <a href="/Offer/Read.html">
+                    <a href="/location-templates/Offer/Read.html">
                         <div class="offer">
-                            <img src="/images/offers/Maison-1.jpg" class="h-48 w-full rounded-xl object-center object-cover" />
+                            <img src="/location-templates/images/offers/Maison-1.jpg" class="h-48 w-full rounded-xl object-center object-cover" />
                             <div class="bg-white py-3 px-3 rounded-b-xl">
                                 <div class="flex justify-between">
                                     <p class="font-bold text-lg">Maison à louer</p>
@@ -310,15 +310,15 @@
                                 <div class="border-t border-gray-300">
                                     <div class="flex gap-3 text-sm py-3">
                                         <div class="flex items-center gap-1">
-                                        <img src="/images/Bedroom.svg" width="25" height="25" alt="" />
+                                        <img src="/location-templates/images/Bedroom.svg" width="25" height="25" alt="" />
                                         <span class="flex-1 text-gray-700">3 chambres</span> 
                                         </div>
                                         <div class="flex items-center gap-1">
-                                        <img src="/images/Wc.svg" width="25" height="25" alt="" />
+                                        <img src="/location-templates/images/Wc.svg" width="25" height="25" alt="" />
                                         <span class="flex-1 text-gray-700">2 toilettes</span> 
                                         </div>
                                         <div class="flex items-center gap-1">
-                                        <img src="/images/Dimension.svg" width="25" height="25" alt="" />
+                                        <img src="/location-templates/images/Dimension.svg" width="25" height="25" alt="" />
                                         <span class="flex-1 text-gray-700">25 m²</span> 
                                         </div>
                                     </div>

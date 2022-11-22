@@ -64,7 +64,7 @@
                 
                 <ul class="w-auto">
                     <li>
-                        <img src="/images/Menu.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = true" />
+                        <img src="/location-templates/images/Menu.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = true" />
                     </li>
                 </ul>
             </nav>
@@ -73,13 +73,13 @@
             <div class="absolute top-0 left-0 w-screen h-screen z-10 bg-white" x-show="isModalVisible">
                 <div class="relative w-full h-full p-3">
                     <div class="flex justify-end mb-3">
-                        <img src="/images/Close.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = false" />
+                        <img src="/location-templates/images/Close.svg" width="40" height="40" class="cursor-pointer" @click="isModalVisible = false" />
                     </div>
 
                     <ul class="flex-1 flex flex-col gap-3">
-                        <li><a href="/">Recherche</a></li>
-                        <li><a href="/About">&Agrave; propos de nous</a></li>
-                        <li><a href="/Help">Foire à question</a></li>
+                        <li><a href="/location-templates/">Recherche</a></li>
+                        <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                        <li><a href="/location-templates/Help">Foire à question</a></li>
                     </ul>
                 </div>
             </div>
@@ -88,18 +88,18 @@
             <nav class="hidden md:flex lg:hidden border-b-2 px-12 py-3 items-center justify-between">
                 <h1>Location</h1>
                 <ul class="flex-1 flex justify-center gap-5">
-                    <li><a href="/">Recherche</a></li>
-                    <li><a href="/About">&Agrave; propos de nous</a></li>
-                    <li><a href="/Help">Foire à question</a></li>
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
                 </ul>
                 <ul class="relative flex gap-2">
-                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
-                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
+                    <li x-show="isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Close.svg" width="40" height="40" @click="isAuthModalVisible = false" /></li>
+                    <li x-show="!isAuthModalVisible"><img class="cursor-pointer" src="/location-templates/images/Menu.svg" width="40" height="40" @click="isAuthModalVisible = true" /></li>
 
                     <!-- Login navigation dropdown -->
                     <ul x-show="isAuthModalVisible" class="absolute right-0 top-10 w-[200px] bg-white rounded-md shadow-lg px-3 py-5 text-sm flex flex-col gap-3">
-                        <li><a href="/Auth/Login.html">Connexion</a></li>
-                        <li><a href="/Auth/Register.html">Créer un compte</a></li>
+                        <li><a href="/location-templates/Auth/Login.html">Connexion</a></li>
+                        <li><a href="/location-templates/Auth/Register.html">Créer un compte</a></li>
                     </ul>
                 </ul>
             </nav>
@@ -109,35 +109,35 @@
             <nav class="hidden lg:flex border-b-2 px-12 py-3 items-center justify-between">
                 <h1>Location</h1>
                 <ul class="flex-1 flex justify-center gap-5">
-                    <li><a href="/">Recherche</a></li>
-                    <li><a href="/About">&Agrave; propos de nous</a></li>
-                    <li><a href="/Help">Foire à question</a></li>
+                    <li><a href="/location-templates/">Recherche</a></li>
+                    <li><a href="/location-templates/About">&Agrave; propos de nous</a></li>
+                    <li><a href="/location-templates/Help">Foire à question</a></li>
                 </ul>
                 <ul class="relative flex gap-2">
-                    <li><a href="/Auth/Login.html" class="text-blue-500">Connexion</a></li>
+                    <li><a href="/location-templates/Auth/Login.html" class="text-blue-500">Connexion</a></li>
                     <span>ou</span>
-                    <li><a href="/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
+                    <li><a href="/location-templates/Auth/Register.html" class="text-blue-500">Créer un compte</a></li>
                 </ul>
             </nav>
         </header>
         <main class="flex-1 flex flex-col justify-center p-5">
             <div class="h-full w-full md:w-2/3 lg:w-2/5 m-auto bg-white p-4 rounded-xl shadow">
                 <h2>Connexion</h2>
-                <p class="text-sm mt-10">Vous n'avez pas de compte, <a class="text-sky-700" href="/Auth/Register.html">créer un compte pour publier vos offres</a></p>
+                <p class="text-sm mt-10">Vous n'avez pas de compte, <a class="text-sky-700" href="/location-templates/Auth/Register.html">créer un compte pour publier vos offres</a></p>
                 <form action="" method="post" class="flex flex-col gap-4 mt-3">
                     <div class="form-group">
-                        <img src="/images/Tel.svg" alt="Telephone" width="20" height="20" />
+                        <img src="/location-templates/images/Tel.svg" alt="Telephone" width="20" height="20" />
                         <input type="tel" name="Telephone" id="" class="flex-1 text-sm" placeholder="Entrez votre numéro de téléphone" />
                     </div>
                     <div class="form-group">
-                        <img src="/images/Password.svg" alt="Password" width="20" height="20" />
+                        <img src="/location-templates/images/Password.svg" alt="Password" width="20" height="20" />
                         <input type="tel" name="Password" id="" class="flex-1 text-sm" placeholder="Entrez votre mot de passe" />
                     </div>
                     <div>
                         <button type="submit" class="primary">Acceder à mon compte</button>
                     </div>
                 </form>
-                <p class="text-sm mt-3"><a class="text-sky-700" href="/Auth/ForgottenCredentials.html">J'ai oublié mon mot de passe</a></p>
+                <p class="text-sm mt-3"><a class="text-sky-700" href="/location-templates/Auth/ForgottenCredentials.html">J'ai oublié mon mot de passe</a></p>
             </div>
         </main>
         <footer>
