@@ -194,6 +194,31 @@
                             </div>
                         </div>
 
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                           <div class="flex flex-col gap-2">
+                                <label for="Caution" class="text-sky-700">Caution</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Payment.svg" width="25" height="25" />
+                                    <input type="number" name="Caution" id="Caution" value="0" min="0" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="Advance" class="text-sky-700">Avance</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/AccountBalance.svg" width="25" height="25" />
+                                    <input type="number" name="Advance" id="Advance" value="0" min="0" class="flex-1" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="Cost" class="text-sky-700">Côut</label>
+                                <div class="form-group">
+                                    <img src="/location-templates/images/Sell.svg" width="25" height="25" />
+                                    <input type="number" name="Cost" id="Cost" value="0" min="0" class="flex-1" />
+                                </div>
+                                <p class="text-gray-500"><small>Loyer dans le cas d'une location</small></p>
+                            </div> 
+                        </div>
+
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <div class="flex flex-col gap-2">
                                 <label for="Type" class="text-sky-700">Type</label>
@@ -216,7 +241,7 @@
                                     <img src="/location-templates/images/MultiFloor.svg" width="25" height="25" />
                                     <select name="Category" id="Category" class="flex-1">
                                         <option value="SINGLE_FLOOR">Rez-de-chaussée</option>
-                                        <option value="MULTI_FLOOR">&Eacute;tages</option>
+                                        <option value="MULTI_FLOOR">Immeuble</option>
                                         <option value="DUPLEX">Duplex</option>
                                     </select>
                                 </div>
@@ -228,6 +253,8 @@
                                     <select name="Format" id="Format" class="flex-1">
                                         <option value="HABITATION">Habitation</option>
                                         <option value="COLOCATION">Colocation</option>
+                                        <option value="SMALL_DURATION">Courte durée</option>
+                                        <option value="BAIL_TO_SELL">Bail - Vente</option>
                                     </select>
                                 </div>
                             </div>
@@ -305,6 +332,27 @@
                                     <input type="checkbox" name="AreChargesIncluded" id="AreChargesIncluded" />
                                     Charges prises en charge
                             </label>
+                            <label for="HasAirConditioning" class="text-sky-700">
+                                    <input type="checkbox" name="HasAirConditioning" id="HasAirConditioning" />
+                                    Jardin
+                            </label>
+                            <label for="HasFurniture" class="text-sky-700">
+                                    <input type="checkbox" name="HasFurniture" id="HasFurniture" />
+                                    Service de nettoyage
+                            </label>
+                            <label for="AreChargesIncluded" class="text-sky-700">
+                                    <input type="checkbox" name="AreChargesIncluded" id="AreChargesIncluded" />
+                                    Propriété sécurisée
+                            </label>
+                            <label for="AreChargesIncluded" class="text-sky-700">
+                                    <input type="checkbox" name="AreChargesIncluded" id="AreChargesIncluded" />
+                                    Espace lessive
+                            </label>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sky-700" for="Description">Plus de détails sur l'offre</label>
+                            <textarea name="Description" id="Description" cols="30" rows="10" class="border focus:outline-sky-700"></textarea>
                         </div>
 
                         <div>
